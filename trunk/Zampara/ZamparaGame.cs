@@ -19,12 +19,11 @@ namespace Zampara
     public class ZamparaGame : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-
-        private Texture2D m_zamparaMan;
+        LevelBase walkLevel;
 
         public ZamparaGame()
         {
+            walkLevel = new LevelWalker(this);
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
@@ -48,11 +47,7 @@ namespace Zampara
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            m_zamparaMan = Content.Load<Texture2D>("zampara_man");
-            Content
+            walkLevel.LoadContent();
             
 
             // TODO: use this.Content to load your game content here
@@ -64,10 +59,9 @@ namespace Zampara
         /// </summary>
         protected override void UnloadContent()
         {
+            walkLevel.UnloadContent();
             // TODO: Unload any non ContentManager content here
         }
-
-        float adamposX = 0f;
 
         /// <summary>
         /// Allows the game to run logic such as updating the world,
@@ -80,11 +74,8 @@ namespace Zampara
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            KeyboardState state = Keyboard.GetState();
-            if (state.IsKeyDown(Keys.Right))
-            {
-                adamposX += 0.01f * gameTime.ElapsedGameTime.Milliseconds;
-            }
+            walkLevel.HandleInput();
+            walkLevel.Update(gameTime);
 
             // TODO: Add your update logic here
 
@@ -99,12 +90,7 @@ namespace Zampara
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
-            spriteBatch.Draw(m_zamparaMan, new Rectangle((int)adamposX, 5, m_zamparaMan.Width, m_zamparaMan.Height), Color.Yellow);
-            spriteBatch.End();
-
-            
-
+            walkLevel.Draw(gameTime);
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);

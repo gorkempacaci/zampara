@@ -5,3 +5,10 @@ C:\Documents and Settings\labuser.LAB09\Desktop\Zampara\Zampara\obj\x86\Debug\Mi
 C:\Documents and Settings\labuser.LAB09\Desktop\Zampara\Zampara\obj\x86\Debug\Zampara.exe
 C:\Documents and Settings\labuser.LAB09\Desktop\Zampara\Zampara\obj\x86\Debug\Zampara.pdb
 C:\Documents and Settings\labuser.LAB09\Desktop\Zampara\Zampara\bin\x86\Debug\Content\zampara_man.xnb
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\obj\x86\Debug\Zampara.exe
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\zampara_man.xnb
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Zampara.exe
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Zampara.pdb
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\obj\x86\Debug\Zampara.pdb
