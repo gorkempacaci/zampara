@@ -7,7 +7,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\Zampara\Zampara\bin\x86\Debug\Content\zampara_man.xnb</Output>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\zampara_man.xnb</Output>
       <Time>2010-01-29T21:19:01.375+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
@@ -15,10 +15,10 @@
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Documents and Settings\labuser.LAB09\Desktop\Zampara\Zampara\Content\</RootDirectory>
-      <LoggerRootDirectory>C:\Documents and Settings\labuser.LAB09\Desktop\Zampara\Zampara\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Documents and Settings\labuser.LAB09\Desktop\Zampara\Zampara\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Documents and Settings\labuser.LAB09\Desktop\Zampara\Zampara\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
