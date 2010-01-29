@@ -10,6 +10,24 @@
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\zampara_man.xnb</Output>
       <Time>2010-01-29T21:19:01.375+02:00</Time>
     </Item>
+    <Item>
+      <Source>road.png</Source>
+      <Name>road</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\road.xnb</Output>
+      <Time>2010-01-29T23:18:58.203125+02:00</Time>
+    </Item>
+    <Item>
+      <Source>varil.png</Source>
+      <Name>varil</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\varil.xnb</Output>
+      <Time>2010-01-29T23:22:22.359375+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

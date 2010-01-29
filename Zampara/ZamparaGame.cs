@@ -11,6 +11,10 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Net;
 using Microsoft.Xna.Framework.Storage;
 
+using InputHandlers.Mouse;
+using InputHandlers.Keyboard;
+
+
 namespace Zampara
 {
     /// <summary>
@@ -18,13 +22,15 @@ namespace Zampara
     /// </summary>
     public class ZamparaGame : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
-        LevelBase walkLevel;
+        GraphicsDeviceManager m_graphics;
+        LevelBase m_levelWalking;
+        public KBHandler KeyboardEvents;
 
         public ZamparaGame()
         {
-            walkLevel = new LevelWalker(this);
-            graphics = new GraphicsDeviceManager(this);
+            m_levelWalking = new LevelWalker(this);
+            m_graphics = new GraphicsDeviceManager(this);
+            KeyboardEvents = KBHandler.Instance;
             Content.RootDirectory = "Content";
         }
 
@@ -37,7 +43,9 @@ namespace Zampara
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            MouseHandler.Instance.Reset();
+            KBHandler.Instance.Reset();
+            m_levelWalking.Initialize();
             base.Initialize();
         }
 
@@ -47,7 +55,7 @@ namespace Zampara
         /// </summary>
         protected override void LoadContent()
         {
-            walkLevel.LoadContent();
+            m_levelWalking.LoadContent();
             
 
             // TODO: use this.Content to load your game content here
@@ -59,7 +67,7 @@ namespace Zampara
         /// </summary>
         protected override void UnloadContent()
         {
-            walkLevel.UnloadContent();
+            m_levelWalking.UnloadContent();
             // TODO: Unload any non ContentManager content here
         }
 
@@ -74,13 +82,18 @@ namespace Zampara
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            walkLevel.HandleInput();
-            walkLevel.Update(gameTime);
+            KeyboardEvents.Poll(Keyboard.GetState(), gameTime);
+
+            m_levelWalking.HandleInput();
+            m_levelWalking.Update(gameTime);
+            
 
             // TODO: Add your update logic here
 
             base.Update(gameTime);
         }
+
+        
 
         /// <summary>
         /// This is called when the game should draw itself.
@@ -90,7 +103,7 @@ namespace Zampara
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            walkLevel.Draw(gameTime);
+            m_levelWalking.Draw(gameTime);
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
