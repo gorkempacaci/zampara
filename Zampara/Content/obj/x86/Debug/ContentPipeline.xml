@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\road.xnb</Output>
-      <Time>2010-01-29T23:18:58.203125+02:00</Time>
+      <Time>2010-01-29T23:51:53.828125+02:00</Time>
     </Item>
     <Item>
       <Source>varil.png</Source>
@@ -27,6 +27,24 @@
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\varil.xnb</Output>
       <Time>2010-01-29T23:22:22.359375+02:00</Time>
+    </Item>
+    <Item>
+      <Source>tree1.png</Source>
+      <Name>tree1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\tree1.xnb</Output>
+      <Time>2010-01-30T00:29:21.359375+02:00</Time>
+    </Item>
+    <Item>
+      <Source>tree2.png</Source>
+      <Name>tree2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\tree2.xnb</Output>
+      <Time>2010-01-30T00:29:15.4375+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
