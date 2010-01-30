@@ -69,9 +69,9 @@ namespace Zampara
         {
             Paths = new WalkPath[]
             {
-                 new WalkPath{Y=150, Scale=0.5f},
-                 new WalkPath{Y=225, Scale=0.75f},
-                 new WalkPath{Y=300, Scale=1.0f}
+                 new WalkPath{Y=220, Scale=0.8f},
+                 new WalkPath{Y=270, Scale=0.9f},
+                 new WalkPath{Y=320, Scale=1.0f}
             };
         }
 
@@ -184,8 +184,11 @@ namespace Zampara
             SpriteBatch batch = new SpriteBatch(Game.GraphicsDevice);
 
             batch.Begin();
-            
+
+            int howManyRoadsAreBehind = m_roadOffset / (m_road.Width / 2);
+
             batch.Draw(m_road, new Rectangle(0 - m_roadOffset, 300, m_road.Width/2, m_road.Height/2), Color.White);
+            batch.Draw(m_road, new Rectangle(0 - m_roadOffset + m_road.Width / 2, 300, m_road.Width / 2, m_road.Height / 2), Color.White);
 
             for (int ti = 0; ti < m_treePositions.Length; ti++)
             {
@@ -193,14 +196,15 @@ namespace Zampara
                 int treePosition = m_treePositions[ti];
                 batch.Draw(tree, new Rectangle(treePosition - m_roadOffset, 140, tree.Width / 2, tree.Height / 2), Color.White);
             }
+
+            batch.Draw(m_zamparaMan, new Rectangle((int)m_zamparaManPos.X, (int)CurrentWalkPath.Y, (int)(m_zamparaMan.Width * CurrentWalkPath.Scale), (int)(m_zamparaMan.Height * CurrentWalkPath.Scale)), Color.White);
+
             for (int bi = 0; bi < m_binPositions.Length; bi++)
             {
                 Texture2D bin = m_availableBinKinds[m_binKindIndices[bi]];
                 int binPosition = m_binPositions[bi];
-                batch.Draw(bin, new Rectangle(binPosition - m_roadOffset, 400, bin.Width / 4, bin.Height / 3), Color.White);
+                batch.Draw(bin, new Rectangle(binPosition - m_roadOffset, 430, bin.Width / 4, bin.Height / 4), Color.White);
             }
-
-            batch.Draw(m_zamparaMan, new Rectangle((int)m_zamparaManPos.X, (int)CurrentWalkPath.Y, m_zamparaMan.Width, m_zamparaMan.Height), Color.White);
 
             batch.End();
 
