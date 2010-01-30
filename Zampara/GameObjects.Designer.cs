@@ -70,11 +70,56 @@ namespace Zampara {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 700.
+        /// </summary>
+        internal static string Home1 {
+            get {
+                return ResourceManager.GetString("Home1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 900.
+        /// </summary>
+        internal static string Home2 {
+            get {
+                return ResourceManager.GetString("Home2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 150, 250, 400, 700, 1200.
         /// </summary>
         internal static string Trees {
             get {
                 return ResourceManager.GetString("Trees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 150.
+        /// </summary>
+        internal static string Wall1 {
+            get {
+                return ResourceManager.GetString("Wall1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 500.
+        /// </summary>
+        internal static string Wall2 {
+            get {
+                return ResourceManager.GetString("Wall2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1125.
+        /// </summary>
+        internal static string Wall3 {
+            get {
+                return ResourceManager.GetString("Wall3", resourceCulture);
             }
         }
     }
