@@ -50,6 +50,8 @@ namespace Zampara
 
         Texture2D m_zamparaMan;
         Texture2D m_road;
+        Texture2D m_clouds;
+        Texture2D m_blocks;
 
         Texture2D[] m_availableTreeKinds;
         int[] m_treePositions;
@@ -155,6 +157,8 @@ namespace Zampara
             Random rand = new Random();
             m_road = Game.Content.Load<Texture2D>("road");
             m_zamparaMan = Game.Content.Load<Texture2D>("zampara_man");
+            m_clouds = Game.Content.Load<Texture2D>("clouds");
+            m_blocks = Game.Content.Load<Texture2D>("blocks");
 
             m_availableTreeKinds = new Texture2D[2];
             m_availableTreeKinds[0] = Game.Content.Load<Texture2D>("tree1");
@@ -179,6 +183,25 @@ namespace Zampara
             
         }
 
+        public void DrawTile(SpriteBatch _batch, Texture2D _bitmap, int _offset, int _y, float _scale)
+        {
+            float bitmapWidth = _bitmap.Width * _scale;
+            float bitmapHeight = _bitmap.Height * _scale;
+
+            if (_offset >= bitmapWidth)
+            {
+                _offset = _offset % (int)bitmapWidth;
+            }
+
+            int howManyItemsNeeded = (int)Math.Ceiling((float)Game.Window.ClientBounds.Width / bitmapWidth) + 1;
+            
+            for (int i = 0; i < howManyItemsNeeded; i++)
+            { 
+                int xPos = (int)(-_offset + i * bitmapWidth);
+                _batch.Draw(_bitmap, new Rectangle(xPos, _y, (int)bitmapWidth, (int)bitmapHeight), Color.White);
+            }
+        }
+
         public override void Draw(GameTime _time)
         {
             SpriteBatch batch = new SpriteBatch(Game.GraphicsDevice);
@@ -187,8 +210,12 @@ namespace Zampara
 
             int howManyRoadsAreBehind = m_roadOffset / (m_road.Width / 2);
 
-            batch.Draw(m_road, new Rectangle(0 - m_roadOffset, 300, m_road.Width/2, m_road.Height/2), Color.White);
-            batch.Draw(m_road, new Rectangle(0 - m_roadOffset + m_road.Width / 2, 300, m_road.Width / 2, m_road.Height / 2), Color.White);
+            DrawTile(batch, m_road, m_roadOffset, 300, 0.5f);
+            DrawTile(batch, m_clouds, m_roadOffset / 4, 0, 1f);
+            DrawTile(batch, m_blocks, m_roadOffset / 2, 50, 0.3f);
+
+            //batch.Draw(m_road, new Rectangle(0 - m_roadOffset, 300, m_road.Width/2, m_road.Height/2), Color.White);
+            //batch.Draw(m_road, new Rectangle(0 - m_roadOffset + m_road.Width / 2, 300, m_road.Width / 2, m_road.Height / 2), Color.White);
 
             for (int ti = 0; ti < m_treePositions.Length; ti++)
             {

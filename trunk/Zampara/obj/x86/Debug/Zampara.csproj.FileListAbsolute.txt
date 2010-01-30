@@ -20,3 +20,5 @@ C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\obj\x86\Debug\Zampara.GameObjects.resources
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\obj\x86\Debug\Zampara.csproj.GenerateResource.Cache
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\bin.xnb
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\blocks.xnb
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\clouds.xnb
