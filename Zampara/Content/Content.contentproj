@@ -158,8 +158,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="behlul_hurt.png">
-      <Name>behlul_hurt</Name>
+    <Compile Include="behlul-hurt.png">
+      <Name>behlul-hurt</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
