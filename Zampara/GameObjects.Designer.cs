@@ -97,7 +97,7 @@ namespace Zampara {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 150.
+        ///   Looks up a localized string similar to 0, 175.
         /// </summary>
         internal static string Wall1 {
             get {

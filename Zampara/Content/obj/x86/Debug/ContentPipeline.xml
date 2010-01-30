@@ -98,7 +98,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wall1.xnb</Output>
-      <Time>2010-01-30T05:43:36.296875+02:00</Time>
+      <Time>2010-01-30T13:40:26.625+02:00</Time>
     </Item>
     <Item>
       <Source>wall2.png</Source>
@@ -107,7 +107,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wall2.xnb</Output>
-      <Time>2010-01-30T05:43:36.265625+02:00</Time>
+      <Time>2010-01-30T13:39:42.09375+02:00</Time>
     </Item>
     <Item>
       <Source>wall3.png</Source>
@@ -116,7 +116,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wall3.xnb</Output>
-      <Time>2010-01-30T05:43:36.296875+02:00</Time>
+      <Time>2010-01-30T13:41:06.34375+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

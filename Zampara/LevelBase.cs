@@ -47,6 +47,7 @@ namespace Zampara
         const int WALK_MAXX = 400;
         const int MAN_MAXX = 650;
         const int HOMESY = 100;
+        const int WALLSY = 156;
         readonly WalkPath[] Paths; // initialized in constructor
 
         Texture2D m_zamparaMan;
@@ -246,15 +247,15 @@ namespace Zampara
             float homeLayerScale = 0.25f;
             for (int wi = 0; wi < m_wall1Coordinates.Length; wi++)
             {
-                batch.Draw(m_wall1, new Rectangle(m_wall1Coordinates[wi] - homeLayerOffset, HOMESY, (int)(m_wall1.Width * homeLayerScale), (int)(m_wall1.Height * homeLayerScale)), Color.White);
+                batch.Draw(m_wall1, new Rectangle(m_wall1Coordinates[wi] - homeLayerOffset, WALLSY, (int)(m_wall1.Width * homeLayerScale), (int)(m_wall1.Height * homeLayerScale)), Color.White);
             }
-            for (int wi = 0; wi < m_wall1Coordinates.Length; wi++)
+            for (int wi = 0; wi < m_wall2Coordinates.Length; wi++)
             {
-                batch.Draw(m_wall2, new Rectangle(m_wall2Coordinates[wi] - homeLayerOffset, HOMESY, (int)(m_wall2.Width * homeLayerScale), (int)(m_wall2.Height * homeLayerScale)), Color.White);
+                batch.Draw(m_wall2, new Rectangle(m_wall2Coordinates[wi] - homeLayerOffset, WALLSY, (int)(m_wall2.Width * homeLayerScale), (int)(m_wall2.Height * homeLayerScale)), Color.White);
             }
-            for (int wi = 0; wi < m_wall1Coordinates.Length; wi++)
+            for (int wi = 0; wi < m_wall3Coordinates.Length; wi++)
             {
-                batch.Draw(m_wall3, new Rectangle(m_wall3Coordinates[wi] - homeLayerOffset, HOMESY, (int)(m_wall3.Width * homeLayerScale), (int)(m_wall3.Height * homeLayerScale)), Color.White);
+                batch.Draw(m_wall3, new Rectangle(m_wall3Coordinates[wi] - homeLayerOffset, WALLSY, (int)(m_wall3.Width * homeLayerScale), (int)(m_wall3.Height * homeLayerScale)), Color.White);
             }
             for (int hi = 0; hi < m_home1Coordinates.Length; hi++)
             {
