@@ -185,7 +185,7 @@ namespace Zampara
 
             int howManyRoadsAreBehind = RoadOffset / (m_road.Width / 2);
 
-            DrawTile(batch, m_clouds, RoadOffset / 4, 0, 1f);
+            DrawTile(batch, m_clouds, RoadOffset / 4, 0, .5f);
 
             DrawTile(batch, m_blocks, RoadOffset / 2, 100, .5f);
 

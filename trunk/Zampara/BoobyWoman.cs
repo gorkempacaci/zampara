@@ -54,23 +54,27 @@ namespace Zampara
     public class ZamparaMan : ActorBase
     {
         Animation m_walkingAnimation;
+        Texture2D m_imageHit;
+        ZamparaManState State;
 
         public enum ZamparaManState
         { 
+            Waiting,
             Walking,
             HidingBehindTree,
-            HindingBehindBin
+            HindingBehindBin,
+            GettingHit
         }
 
         public ZamparaMan(ZamparaGame _game)
             : base(_game)
-        { 
-        
+        {
+            State = ZamparaManState.Waiting;
         }
 
         public override void Load()
         {
-            m_walkingAnimation = new Animation(Game.Content.Load<Texture2D>("lady-walk"), 0.2f, true, 4);
+            m_walkingAnimation = new Animation(Game.Content.Load<Texture2D>("behlul"), 0.25f, true, 8);
         }
 
         public override void Update(GameTime _time)
@@ -125,6 +129,7 @@ namespace Zampara
 
         public override void Draw(GameTime _time, SpriteBatch _batch, int _offset)
         {
+            
             m_animationPlayer.PlayAnimation(m_walkingAnimation);
             float scaleFactor = 0.8f + 0.2f * (Position.Y - LevelWalker.WALK_MINY) / (LevelWalker.WALK_MAXY - LevelWalker.WALK_MINY);
             GameTime animationTime;
@@ -136,7 +141,7 @@ namespace Zampara
             {
                 animationTime = new GameTime();
             }
-            m_animationPlayer.Draw(animationTime, _batch, new Vector2(Position.X + _offset, Position.Y), (Facing == FaceDirection.Left ? SpriteEffects.None : SpriteEffects.FlipHorizontally), scaleFactor);
+            m_animationPlayer.Draw(animationTime, _batch, new Vector2(Position.X + _offset, Position.Y), (Facing == FaceDirection.Right ? SpriteEffects.None : SpriteEffects.FlipHorizontally), scaleFactor);
         }
 
         public void HandleInput()
