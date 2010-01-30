@@ -13,5 +13,14 @@ namespace Zampara
             Hitting
         }
 
+        public BoobyWomanState State;
+        public int Velocity;
+        public readonly Animation Animation;
+
+        public BoobyWoman(ZamparaGame _game)
+        {
+            State = BoobyWomanState.Walking;
+            Velocity = -100;
+        }
     }
 }
