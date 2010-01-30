@@ -61,7 +61,7 @@ namespace Zampara
         {
             m_boobyWoman = new BoobyWoman(this.Game);
             m_boobyWoman.Position = new Vector2(500, 450);
-            m_boobyWoman.Velocity = new Vector2(-50, 0);
+            m_boobyWoman.Velocity = new Vector2(0, 0);
 
             Paths = new WalkPath[]
             {
@@ -236,15 +236,27 @@ namespace Zampara
             m_boobyWoman.Update(_time);
             m_zamparaMan.Update(_time);
 
-
-
             CheckForCollisionsAndAct();
         }
 
         public void CheckForCollisionsAndAct()
-        { 
-            
-        }
+        {
+            Rectangle rectBoobywoman = m_boobyWoman.Rectangle;
+            Rectangle rectZampara = m_zamparaMan.Rectangle;
 
+            //rectBoobywoman.Inflate(-50, -50);
+            //rectZampara.Inflate(-50, -50);
+
+            if (rectBoobywoman.Intersects(rectZampara))
+            {
+                m_boobyWoman.State = BoobyWoman.BoobyWomanState.Hitting;
+                m_zamparaMan.State = ZamparaMan.ZamparaManState.GettingHit;
+            }
+            else
+            {
+                m_boobyWoman.State = BoobyWoman.BoobyWomanState.Walking;
+                m_zamparaMan.State = ZamparaMan.ZamparaManState.Walking;
+            }
+        }
     }
 }

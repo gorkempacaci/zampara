@@ -1,0 +1,6 @@
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\InputHandlersLib\bin\x86\Release\InputHandlersLib.dll
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\InputHandlersLib\bin\x86\Release\InputHandlersLib.pdb
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\InputHandlersLib\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\InputHandlersLib\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\InputHandlersLib\obj\x86\Release\InputHandlersLib.dll
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\InputHandlersLib\obj\x86\Release\InputHandlersLib.pdb
