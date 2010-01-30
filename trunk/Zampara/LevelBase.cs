@@ -46,12 +46,19 @@ namespace Zampara
         const int WALK_MINX = 100;
         const int WALK_MAXX = 400;
         const int MAN_MAXX = 650;
+        const int HOMESY = 100;
         readonly WalkPath[] Paths; // initialized in constructor
 
         Texture2D m_zamparaMan;
         Texture2D m_road;
         Texture2D m_clouds;
         Texture2D m_blocks;
+        Texture2D m_grass;
+        Texture2D m_wall1;
+        Texture2D m_wall2;
+        Texture2D m_wall3;
+        Texture2D m_home1;
+        Texture2D m_home2;
 
         Texture2D[] m_availableTreeKinds;
         int[] m_treePositions;
@@ -60,6 +67,13 @@ namespace Zampara
         Texture2D[] m_availableBinKinds;
         int[] m_binPositions;
         int[] m_binKindIndices;
+
+        int[] m_wall1Coordinates;
+        int[] m_wall2Coordinates;
+        int[] m_wall3Coordinates;
+
+        int[] m_home1Coordinates;
+        int[] m_home2Coordinates;
 
         Vector2 m_zamparaManPos;
         float m_zamparaManVelocity; // linear velocity
@@ -159,6 +173,15 @@ namespace Zampara
             m_zamparaMan = Game.Content.Load<Texture2D>("zampara_man");
             m_clouds = Game.Content.Load<Texture2D>("clouds");
             m_blocks = Game.Content.Load<Texture2D>("blocks");
+            m_grass = Game.Content.Load<Texture2D>("grass");
+
+            m_wall1 = Game.Content.Load<Texture2D>("wall1");
+            m_wall2 = Game.Content.Load<Texture2D>("wall2");
+            m_wall3 = Game.Content.Load<Texture2D>("wall3");
+
+            m_home1 = Game.Content.Load<Texture2D>("home1");
+            m_home2 = Game.Content.Load<Texture2D>("home2");
+
 
             m_availableTreeKinds = new Texture2D[2];
             m_availableTreeKinds[0] = Game.Content.Load<Texture2D>("tree1");
@@ -176,6 +199,12 @@ namespace Zampara
             m_binPositions = GameObjects.Bins.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
             m_binKindIndices = m_binPositions.Select(x => rand.Next(0, m_availableBinKinds.Length)).ToArray();
 
+            m_wall1Coordinates = GameObjects.Wall1.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
+            m_wall2Coordinates = GameObjects.Wall2.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
+            m_wall3Coordinates = GameObjects.Wall3.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
+
+            m_home1Coordinates = GameObjects.Home1.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
+            m_home2Coordinates = GameObjects.Home2.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
         }
 
         public override void UnloadContent()
@@ -210,13 +239,35 @@ namespace Zampara
 
             int howManyRoadsAreBehind = m_roadOffset / (m_road.Width / 2);
 
-            DrawTile(batch, m_road, m_roadOffset, 300, 0.5f);
             DrawTile(batch, m_clouds, m_roadOffset / 4, 0, 1f);
-            DrawTile(batch, m_blocks, m_roadOffset / 2, 50, 0.3f);
+            DrawTile(batch, m_blocks, m_roadOffset / 2, 50, 0.5f);
 
-            //batch.Draw(m_road, new Rectangle(0 - m_roadOffset, 300, m_road.Width/2, m_road.Height/2), Color.White);
-            //batch.Draw(m_road, new Rectangle(0 - m_roadOffset + m_road.Width / 2, 300, m_road.Width / 2, m_road.Height / 2), Color.White);
+            int homeLayerOffset = (int)(m_roadOffset / 1.5);
+            float homeLayerScale = 0.25f;
+            for (int wi = 0; wi < m_wall1Coordinates.Length; wi++)
+            {
+                batch.Draw(m_wall1, new Rectangle(m_wall1Coordinates[wi] - homeLayerOffset, HOMESY, (int)(m_wall1.Width * homeLayerScale), (int)(m_wall1.Height * homeLayerScale)), Color.White);
+            }
+            for (int wi = 0; wi < m_wall1Coordinates.Length; wi++)
+            {
+                batch.Draw(m_wall2, new Rectangle(m_wall2Coordinates[wi] - homeLayerOffset, HOMESY, (int)(m_wall2.Width * homeLayerScale), (int)(m_wall2.Height * homeLayerScale)), Color.White);
+            }
+            for (int wi = 0; wi < m_wall1Coordinates.Length; wi++)
+            {
+                batch.Draw(m_wall3, new Rectangle(m_wall3Coordinates[wi] - homeLayerOffset, HOMESY, (int)(m_wall3.Width * homeLayerScale), (int)(m_wall3.Height * homeLayerScale)), Color.White);
+            }
+            for (int hi = 0; hi < m_home1Coordinates.Length; hi++)
+            {
+                batch.Draw(m_home1, new Rectangle(m_home1Coordinates[hi] - homeLayerOffset, HOMESY, (int)(m_home1.Width * homeLayerScale), (int)(m_home1.Height * homeLayerScale)), Color.White);
+            }
+            for (int hi = 0; hi < m_home2Coordinates.Length; hi++)
+            {
+                batch.Draw(m_home2, new Rectangle(m_home2Coordinates[hi] - homeLayerOffset, HOMESY, (int)(m_home2.Width * homeLayerScale), (int)(m_home2.Height * homeLayerScale)), Color.White);
+            }
 
+            DrawTile(batch, m_road, m_roadOffset, 300, 0.5f);
+
+            // TREES
             for (int ti = 0; ti < m_treePositions.Length; ti++)
             {
                 Texture2D tree = m_availableTreeKinds[m_treeKindIndices[ti]];
@@ -224,14 +275,18 @@ namespace Zampara
                 batch.Draw(tree, new Rectangle(treePosition - m_roadOffset, 140, tree.Width / 2, tree.Height / 2), Color.White);
             }
 
+            // ZAMPARA
             batch.Draw(m_zamparaMan, new Rectangle((int)m_zamparaManPos.X, (int)CurrentWalkPath.Y, (int)(m_zamparaMan.Width * CurrentWalkPath.Scale), (int)(m_zamparaMan.Height * CurrentWalkPath.Scale)), Color.White);
 
+            // BINS
             for (int bi = 0; bi < m_binPositions.Length; bi++)
             {
                 Texture2D bin = m_availableBinKinds[m_binKindIndices[bi]];
                 int binPosition = m_binPositions[bi];
                 batch.Draw(bin, new Rectangle(binPosition - m_roadOffset, 430, bin.Width / 4, bin.Height / 4), Color.White);
             }
+
+            DrawTile(batch, m_grass, (int)(m_roadOffset*1.2), 343, 0.4f);
 
             batch.End();
 

@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\road.xnb</Output>
-      <Time>2010-01-30T05:43:35.984375+02:00</Time>
+      <Time>2010-01-29T23:51:53.828125+02:00</Time>
     </Item>
     <Item>
       <Source>tree1.png</Source>
@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\blocks.xnb</Output>
-      <Time>2010-01-30T05:43:35.875+02:00</Time>
+      <Time>2010-01-30T11:55:14.3125+02:00</Time>
     </Item>
     <Item>
       <Source>clouds.png</Source>
@@ -63,6 +63,60 @@
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\clouds.xnb</Output>
       <Time>2010-01-30T05:43:36.125+02:00</Time>
+    </Item>
+    <Item>
+      <Source>grass.png</Source>
+      <Name>grass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\grass.xnb</Output>
+      <Time>2010-01-29T23:51:52.125+02:00</Time>
+    </Item>
+    <Item>
+      <Source>home1.png</Source>
+      <Name>home1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\home1.xnb</Output>
+      <Time>2010-01-30T05:43:35.59375+02:00</Time>
+    </Item>
+    <Item>
+      <Source>home2.png</Source>
+      <Name>home2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\home2.xnb</Output>
+      <Time>2010-01-30T05:43:35.84375+02:00</Time>
+    </Item>
+    <Item>
+      <Source>wall1.png</Source>
+      <Name>wall1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wall1.xnb</Output>
+      <Time>2010-01-30T05:43:36.296875+02:00</Time>
+    </Item>
+    <Item>
+      <Source>wall2.png</Source>
+      <Name>wall2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wall2.xnb</Output>
+      <Time>2010-01-30T05:43:36.265625+02:00</Time>
+    </Item>
+    <Item>
+      <Source>wall3.png</Source>
+      <Name>wall3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wall3.xnb</Output>
+      <Time>2010-01-30T05:43:36.296875+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
