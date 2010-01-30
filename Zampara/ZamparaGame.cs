@@ -23,13 +23,16 @@ namespace Zampara
     public class ZamparaGame : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager m_graphics;
-        LevelBase m_levelWalking;
+        LevelBase m_currentLevel;
+
         public KBHandler KeyboardEvents;
 
         public ZamparaGame()
         {
-            m_levelWalking = new LevelWalker(this);
+            m_currentLevel = new LevelCinema(this);
             m_graphics = new GraphicsDeviceManager(this);
+            m_graphics.PreferredBackBufferWidth = 800;
+            m_graphics.PreferredBackBufferHeight = 500;
             KeyboardEvents = KBHandler.Instance;
             Content.RootDirectory = "Content";
         }
@@ -45,7 +48,7 @@ namespace Zampara
             // TODO: Add your initialization logic here
             MouseHandler.Instance.Reset();
             KBHandler.Instance.Reset();
-            m_levelWalking.Initialize();
+            m_currentLevel.Initialize();
             base.Initialize();
         }
 
@@ -55,7 +58,7 @@ namespace Zampara
         /// </summary>
         protected override void LoadContent()
         {
-            m_levelWalking.LoadContent();
+            m_currentLevel.LoadContent();
             
 
             // TODO: use this.Content to load your game content here
@@ -67,7 +70,7 @@ namespace Zampara
         /// </summary>
         protected override void UnloadContent()
         {
-            m_levelWalking.UnloadContent();
+            m_currentLevel.UnloadContent();
             // TODO: Unload any non ContentManager content here
         }
 
@@ -84,8 +87,8 @@ namespace Zampara
 
             KeyboardEvents.Poll(Keyboard.GetState(), gameTime);
 
-            m_levelWalking.HandleInput();
-            m_levelWalking.Update(gameTime);
+            m_currentLevel.HandleInput();
+            m_currentLevel.Update(gameTime);
             
 
             // TODO: Add your update logic here
@@ -103,10 +106,18 @@ namespace Zampara
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            m_levelWalking.Draw(gameTime);
+            m_currentLevel.Draw(gameTime);
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
+        }
+
+        public void SwitchToWalkerLevel()
+        {
+            m_currentLevel.UnloadContent();
+            m_currentLevel = new LevelWalker(this);
+            m_currentLevel.Initialize();
+            m_currentLevel.LoadContent();
         }
     }
 }

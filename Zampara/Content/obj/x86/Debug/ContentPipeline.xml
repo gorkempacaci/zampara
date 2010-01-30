@@ -62,7 +62,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\clouds.xnb</Output>
-      <Time>2010-01-30T05:43:36.125+02:00</Time>
+      <Time>2010-01-30T14:08:27.34375+02:00</Time>
     </Item>
     <Item>
       <Source>grass.png</Source>
@@ -117,6 +117,33 @@
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wall3.xnb</Output>
       <Time>2010-01-30T13:41:06.34375+02:00</Time>
+    </Item>
+    <Item>
+      <Source>radialblur.fx</Source>
+      <Name>radialblur</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\radialblur.xnb</Output>
+      <Time>2008-03-18T13:39:36+02:00</Time>
+    </Item>
+    <Item>
+      <Source>cine1.PNG</Source>
+      <Name>cine1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\cine1.xnb</Output>
+      <Time>2010-01-30T14:32:22.875+02:00</Time>
+    </Item>
+    <Item>
+      <Source>cine2.PNG</Source>
+      <Name>cine2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\cine2.xnb</Output>
+      <Time>2010-01-30T14:32:42.984375+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

@@ -70,7 +70,7 @@ namespace Zampara {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 700.
+        ///   Looks up a localized string similar to 1300.
         /// </summary>
         internal static string Home1 {
             get {
@@ -79,7 +79,7 @@ namespace Zampara {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 900.
+        ///   Looks up a localized string similar to 1500.
         /// </summary>
         internal static string Home2 {
             get {
@@ -97,7 +97,7 @@ namespace Zampara {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0, 175.
+        ///   Looks up a localized string similar to 0, 175, 525.
         /// </summary>
         internal static string Wall1 {
             get {
@@ -106,7 +106,7 @@ namespace Zampara {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 500.
+        ///   Looks up a localized string similar to 350, 700.
         /// </summary>
         internal static string Wall2 {
             get {
@@ -115,7 +115,7 @@ namespace Zampara {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1125.
+        ///   Looks up a localized string similar to 875.
         /// </summary>
         internal static string Wall3 {
             get {
