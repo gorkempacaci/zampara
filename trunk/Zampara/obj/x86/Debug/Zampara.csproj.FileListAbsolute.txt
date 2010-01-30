@@ -16,3 +16,5 @@ C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\varil.xnb
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\InputHandlersLib.dll
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\InputHandlersLib.pdb
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\tree1.xnb
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\tree2.xnb
