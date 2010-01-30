@@ -25,6 +25,14 @@ namespace Zampara
         GraphicsDeviceManager m_graphics;
         LevelBase m_currentLevel;
 
+        public LevelBase CurrentLevel
+        {
+            get
+            {
+                return m_currentLevel;
+            }
+        }
+
         public KBHandler KeyboardEvents;
 
         public ZamparaGame()
