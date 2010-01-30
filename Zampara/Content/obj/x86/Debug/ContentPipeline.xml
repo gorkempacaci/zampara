@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\clouds.xnb</Output>
-      <Time>2010-01-30T14:08:27.34375+02:00</Time>
+      <Time>2010-01-30T23:44:35.9375+02:00</Time>
     </Item>
     <Item>
       <Source>grass.png</Source>
@@ -153,6 +153,42 @@
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\lady-walk.xnb</Output>
       <Time>2010-01-30T21:45:25.046875+02:00</Time>
+    </Item>
+    <Item>
+      <Source>behlul.png</Source>
+      <Name>behlul</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\behlul.xnb</Output>
+      <Time>2010-01-30T23:09:36.46875+02:00</Time>
+    </Item>
+    <Item>
+      <Source>behlul_hurt.png</Source>
+      <Name>behlul_hurt</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\behlul_hurt.xnb</Output>
+      <Time>2010-01-30T23:20:43.546875+02:00</Time>
+    </Item>
+    <Item>
+      <Source>bin-hidein.png</Source>
+      <Name>bin-hidein</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\bin-hidein.xnb</Output>
+      <Time>2010-01-30T23:14:41.328125+02:00</Time>
+    </Item>
+    <Item>
+      <Source>hand-sprites.png</Source>
+      <Name>hand-sprites</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\hand-sprites.xnb</Output>
+      <Time>2010-01-30T23:45:33.109375+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

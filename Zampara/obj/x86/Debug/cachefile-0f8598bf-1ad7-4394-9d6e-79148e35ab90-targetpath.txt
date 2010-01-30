@@ -15,3 +15,7 @@ Content\blocks.xnb
 Content\wall.xnb
 Content\boobywoman-hit.xnb
 Content\lady-walk.xnb
+Content\behlul.xnb
+Content\behlul_hurt.xnb
+Content\bin-hidein.xnb
+Content\hand-sprites.xnb
