@@ -23,20 +23,16 @@ namespace Zampara
         const int WALLSY = 156;
         readonly WalkPath[] Paths; // initialized in constructor
 
-
+        Effect m_blurEffect;
 
         Texture2D m_zamparaMan;
-        Animation m_boobyWoman;
-        AnimationPlayer m_animationPlayer;
 
         Texture2D m_wall;
         Texture2D m_road;
         Texture2D m_clouds;
         Texture2D m_blocks;
         Texture2D m_grass;
-        Texture2D m_wall1;
-        Texture2D m_wall2;
-        Texture2D m_wall3;
+
         Texture2D m_home1;
         Texture2D m_home2;
 
@@ -60,11 +56,16 @@ namespace Zampara
         float m_zamparaManVerticalVelocity; 
 
         int m_roadOffset = 0;
-        int m_currentWalkPathIndex = 1;
+
+        BoobyWoman m_boobyWoman;
 
         public LevelWalker(ZamparaGame _game)
             : base(_game)
         {
+            m_boobyWoman = new BoobyWoman(this.Game);
+            m_boobyWoman.Position = new Vector2(500, 450);
+            m_boobyWoman.Velocity = new Vector2(-50, 0);
+
             Paths = new WalkPath[]
             {
                  new WalkPath{Y=220, Scale=0.8f},
@@ -143,17 +144,16 @@ namespace Zampara
 
             m_road = Game.Content.Load<Texture2D>("road");
             m_zamparaMan = Game.Content.Load<Texture2D>("zampara_man");
-
-            m_boobyWoman = new Animation(Game.Content.Load<Texture2D>("boobywoman"), 0.3f, true, 4); 
+            m_blurEffect = Game.Content.Load<Effect>("radialblur");
+            m_boobyWoman.Load();
+            m_boobyWoman.IsEnabled = true;
+            
 
             m_clouds = Game.Content.Load<Texture2D>("clouds");
             m_blocks = Game.Content.Load<Texture2D>("blocks");
             m_grass = Game.Content.Load<Texture2D>("grass");
 
             m_wall = Game.Content.Load<Texture2D>("wall");
-            m_wall1 = Game.Content.Load<Texture2D>("wall1");
-            m_wall2 = Game.Content.Load<Texture2D>("wall2");
-            m_wall3 = Game.Content.Load<Texture2D>("wall3");
 
             m_home1 = Game.Content.Load<Texture2D>("home1");
             m_home2 = Game.Content.Load<Texture2D>("home2");
@@ -216,23 +216,14 @@ namespace Zampara
             int howManyRoadsAreBehind = m_roadOffset / (m_road.Width / 2);
 
             DrawTile(batch, m_clouds, m_roadOffset / 4, 0, 1f);
-            DrawTile(batch, m_blocks, m_roadOffset / 2, 100, .5f);
-            DrawTile(batch, m_wall, (int)(m_roadOffset / 1.5), 218, 1f);
 
-            int homeLayerOffset = (int)(m_roadOffset / 1.5);
+            DrawTile(batch, m_blocks, m_roadOffset / 2, 100, .5f);
+
+            DrawTile(batch, m_wall, (int)(m_roadOffset / 1.1), 218, 1f);
+
+            int homeLayerOffset = (int)(m_roadOffset / 1.1);
             float homeLayerScale = 0.25f;
-            //for (int wi = 0; wi < m_wall1Coordinates.Length; wi++)
-            //{
-            //    batch.Draw(m_wall1, new Rectangle(m_wall1Coordinates[wi] - homeLayerOffset, WALLSY, (int)(m_wall1.Width * homeLayerScale), (int)(m_wall1.Height * homeLayerScale)), Color.White);
-            //}
-            //for (int wi = 0; wi < m_wall2Coordinates.Length; wi++)
-            //{
-            //    batch.Draw(m_wall2, new Rectangle(m_wall2Coordinates[wi] - homeLayerOffset, WALLSY, (int)(m_wall2.Width * homeLayerScale), (int)(m_wall2.Height * homeLayerScale)), Color.White);
-            //}
-            //for (int wi = 0; wi < m_wall3Coordinates.Length; wi++)
-            //{
-            //    batch.Draw(m_wall3, new Rectangle(m_wall3Coordinates[wi] - homeLayerOffset, WALLSY, (int)(m_wall3.Width * homeLayerScale), (int)(m_wall3.Height * homeLayerScale)), Color.White);
-            //}
+
             for (int hi = 0; hi < m_home1Coordinates.Length; hi++)
             {
                 batch.Draw(m_home1, new Rectangle(m_home1Coordinates[hi] - homeLayerOffset, HOMESY, (int)(m_home1.Width * homeLayerScale), (int)(m_home1.Height * homeLayerScale)), Color.White);
@@ -252,12 +243,13 @@ namespace Zampara
                 batch.Draw(tree, new Rectangle(treePosition - m_roadOffset, 140, tree.Width / 2, tree.Height / 2), Color.White);
             }
 
+            m_boobyWoman.Draw(_time, batch, -m_roadOffset);
+
             // ZAMPARA
             float scaleFactor = 0.8f + 0.2f * (m_zamparaManPos.Y - WALK_MINY) / (WALK_MAXY - WALK_MINY);
             batch.Draw(m_zamparaMan, new Rectangle((int)m_zamparaManPos.X, (int)m_zamparaManPos.Y, (int)(m_zamparaMan.Width * scaleFactor), (int)(m_zamparaMan.Height * scaleFactor)), Color.White);
 
-            m_animationPlayer.PlayAnimation(m_boobyWoman);
-            m_animationPlayer.Draw(_time, batch, new Vector2(100, 200), SpriteEffects.None);
+
 
             // BINS
             for (int bi = 0; bi < m_binPositions.Length; bi++)
@@ -277,7 +269,8 @@ namespace Zampara
             int deltaY = (int)(m_zamparaManVerticalVelocity * _time.ElapsedGameTime.Milliseconds / 1000);
             int newY = (int)(m_zamparaManPos.Y + deltaY);
             newY = Math.Min(WALK_MAXY, Math.Max(WALK_MINY, newY));
-            
+
+            m_boobyWoman.Update(_time);
 
             int deltaX = (int)(m_zamparaManVelocity * _time.ElapsedGameTime.Milliseconds / 1000);
             int newX = (int)(m_zamparaManPos.X + deltaX);
@@ -319,6 +312,12 @@ namespace Zampara
             m_zamparaManPos.X = newX;
             m_zamparaManPos.Y = newY;
 
+            CheckForCollisionsAndAct();
+        }
+
+        public void CheckForCollisionsAndAct()
+        { 
+            
         }
 
     }

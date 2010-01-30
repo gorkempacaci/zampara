@@ -10,7 +10,7 @@ namespace Zampara
     /// <summary>
     /// Controls playback of an Animation.
     /// </summary>
-    struct AnimationPlayer
+    public struct AnimationPlayer
     {
         /// <summary>
         /// Gets the animation which is currently playing.

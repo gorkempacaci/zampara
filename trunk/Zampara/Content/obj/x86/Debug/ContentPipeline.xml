@@ -83,33 +83,6 @@
       <Time>2010-01-30T05:43:35.84375+02:00</Time>
     </Item>
     <Item>
-      <Source>wall1.png</Source>
-      <Name>wall1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wall1.xnb</Output>
-      <Time>2010-01-30T13:40:26.625+02:00</Time>
-    </Item>
-    <Item>
-      <Source>wall2.png</Source>
-      <Name>wall2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wall2.xnb</Output>
-      <Time>2010-01-30T13:39:42.09375+02:00</Time>
-    </Item>
-    <Item>
-      <Source>wall3.png</Source>
-      <Name>wall3</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wall3.xnb</Output>
-      <Time>2010-01-30T13:41:06.34375+02:00</Time>
-    </Item>
-    <Item>
       <Source>radialblur.fx</Source>
       <Name>radialblur</Name>
       <Importer>EffectImporter</Importer>
@@ -161,7 +134,25 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wall.xnb</Output>
-      <Time>2010-01-30T17:04:23.296875+02:00</Time>
+      <Time>2010-01-30T18:23:31+02:00</Time>
+    </Item>
+    <Item>
+      <Source>boobywoman-hit.png</Source>
+      <Name>boobywoman-hit</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\boobywoman-hit.xnb</Output>
+      <Time>2010-01-30T17:06:21.359375+02:00</Time>
+    </Item>
+    <Item>
+      <Source>lady-walk.png</Source>
+      <Name>lady-walk</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\lady-walk.xnb</Output>
+      <Time>2010-01-30T17:05:47.328125+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
