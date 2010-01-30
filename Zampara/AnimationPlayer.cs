@@ -58,10 +58,15 @@ namespace Zampara
             this.time = 0.0f;
         }
 
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Vector2 position, SpriteEffects spriteEffects)
+        {
+            Draw(gameTime, spriteBatch, position, spriteEffects, 1.0f);
+        }
+
         /// <summary>
         /// Advances the time position and draws the current frame of the animation.
         /// </summary>
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Vector2 position, SpriteEffects spriteEffects)
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Vector2 position, SpriteEffects spriteEffects, float scale)
         {
             if (Animation == null)
                 throw new NotSupportedException("No animation is currently playing.");
@@ -87,7 +92,7 @@ namespace Zampara
             Rectangle source = new Rectangle(FrameIndex * Animation.FrameWidth, 0, Animation.FrameWidth, Animation.Texture.Height);
 
             // Draw the current frame.
-            spriteBatch.Draw(Animation.Texture, position, source, Color.White, 0.0f, Origin, 1.0f, spriteEffects, 0.0f);
+            spriteBatch.Draw(Animation.Texture, position, source, Color.White, 0.0f, Origin, scale, spriteEffects, 0.0f);
         }
     }
 }
