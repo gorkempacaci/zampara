@@ -13,8 +13,10 @@ C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Zampara.pdb
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\obj\x86\Debug\Zampara.pdb
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\road.xnb
-C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\varil.xnb
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\InputHandlersLib.dll
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\InputHandlersLib.pdb
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\tree1.xnb
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\tree2.xnb
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\obj\x86\Debug\Zampara.GameObjects.resources
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\obj\x86\Debug\Zampara.csproj.GenerateResource.Cache
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\bin.xnb
