@@ -3,7 +3,6 @@ Content\road.xnb
 Content\tree1.xnb
 Content\tree2.xnb
 Content\bin.xnb
-Content\blocks.xnb
 Content\clouds.xnb
 Content\grass.xnb
 Content\home1.xnb
@@ -14,3 +13,6 @@ Content\wall3.xnb
 Content\radialblur.xnb
 Content\cine1.xnb
 Content\cine2.xnb
+Content\boobywoman.xnb
+Content\blocks.xnb
+Content\wall.xnb

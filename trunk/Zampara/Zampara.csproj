@@ -84,6 +84,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animation.cs" />
+    <Compile Include="AnimationPlayer.cs" />
     <Compile Include="BoobyWoman.cs" />
     <Compile Include="LevelBase.cs" />
     <Compile Include="GameObjects.Designer.cs">

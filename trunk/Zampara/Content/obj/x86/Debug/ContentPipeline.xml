@@ -47,15 +47,6 @@
       <Time>2010-01-29T23:22:22.359375+02:00</Time>
     </Item>
     <Item>
-      <Source>blocks.png</Source>
-      <Name>blocks</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\blocks.xnb</Output>
-      <Time>2010-01-30T11:55:14.3125+02:00</Time>
-    </Item>
-    <Item>
       <Source>clouds.png</Source>
       <Name>clouds</Name>
       <Importer>TextureImporter</Importer>
@@ -144,6 +135,33 @@
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\cine2.xnb</Output>
       <Time>2010-01-30T14:32:42.984375+02:00</Time>
+    </Item>
+    <Item>
+      <Source>boobywoman.png</Source>
+      <Name>boobywoman</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\boobywoman.xnb</Output>
+      <Time>2010-01-30T16:57:02.375+02:00</Time>
+    </Item>
+    <Item>
+      <Source>blocks.png</Source>
+      <Name>blocks</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\blocks.xnb</Output>
+      <Time>2010-01-30T15:49:12.84375+02:00</Time>
+    </Item>
+    <Item>
+      <Source>wall.png</Source>
+      <Name>wall</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wall.xnb</Output>
+      <Time>2010-01-30T17:04:23.296875+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

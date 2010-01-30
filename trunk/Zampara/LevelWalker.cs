@@ -17,6 +17,8 @@ namespace Zampara
         const int WALK_MINX = 100;
         const int WALK_MAXX = 400;
         const int MAN_MAXX = 650;
+        const int WALK_MINY = 200;
+        const int WALK_MAXY = 300;
         const int HOMESY = 100;
         const int WALLSY = 156;
         readonly WalkPath[] Paths; // initialized in constructor
@@ -24,6 +26,10 @@ namespace Zampara
 
 
         Texture2D m_zamparaMan;
+        Animation m_boobyWoman;
+        AnimationPlayer m_animationPlayer;
+
+        Texture2D m_wall;
         Texture2D m_road;
         Texture2D m_clouds;
         Texture2D m_blocks;
@@ -75,13 +81,6 @@ namespace Zampara
             }
         }
 
-        public WalkPath CurrentWalkPath
-        {
-            get
-            {
-                return Paths[m_currentWalkPathIndex];
-            }
-        }
 
         public int CurrentPosition
         {
@@ -91,35 +90,16 @@ namespace Zampara
             }
         }
 
-        /// <summary>
-        /// Call with +1 to switch to fronter walkpath, -1 to switch to rearer walkpath.
-        /// </summary>
-        /// <param name="_diff"></param>
-        public void ChangeCurrentWalkPath(int _diff)
-        {
-            int newIndex = m_currentWalkPathIndex + _diff;
-            newIndex = Math.Max(0, Math.Min(Paths.Length - 1, newIndex));
-            m_currentWalkPathIndex = newIndex;
-        }
 
         public override void Initialize()
         {
             Game.KeyboardEvents.HandleKBKeyDown += new InputHandlers.Keyboard.KBHandler.DelHandleKBKeyDown(KeyboardEvents_HandleKBKeyDown);
+            m_zamparaManPos.Y = (WALK_MAXY - WALK_MINY) / 2;
         }
 
         void KeyboardEvents_HandleKBKeyDown(Keys[] klist, Keys focus, InputHandlers.Keyboard.KBModifiers m)
         {
-            if (focus == Keys.Up)
-            {
-                ChangeCurrentWalkPath(-1);
-            }
-            else
-            {
-                if (focus == Keys.Down)
-                {
-                    ChangeCurrentWalkPath(+1);
-                }
-            }
+
         }
 
         public override void HandleInput()
@@ -141,6 +121,18 @@ namespace Zampara
                 m_zamparaManVelocity = 0f;
             }
 
+            if (key.IsKeyDown(Keys.Down))
+            {
+                m_zamparaManVerticalVelocity = (int)(WALKING_VELOCITY * 0.7);
+            }
+            else if (key.IsKeyDown(Keys.Up))
+            {
+                m_zamparaManVerticalVelocity = (int)(-WALKING_VELOCITY * 0.7);
+            }
+            else
+            {
+                m_zamparaManVerticalVelocity = 0f;
+            }
             
         }
 
@@ -151,10 +143,14 @@ namespace Zampara
 
             m_road = Game.Content.Load<Texture2D>("road");
             m_zamparaMan = Game.Content.Load<Texture2D>("zampara_man");
+
+            m_boobyWoman = new Animation(Game.Content.Load<Texture2D>("boobywoman"), 0.3f, true, 4); 
+
             m_clouds = Game.Content.Load<Texture2D>("clouds");
             m_blocks = Game.Content.Load<Texture2D>("blocks");
             m_grass = Game.Content.Load<Texture2D>("grass");
 
+            m_wall = Game.Content.Load<Texture2D>("wall");
             m_wall1 = Game.Content.Load<Texture2D>("wall1");
             m_wall2 = Game.Content.Load<Texture2D>("wall2");
             m_wall3 = Game.Content.Load<Texture2D>("wall3");
@@ -220,22 +216,23 @@ namespace Zampara
             int howManyRoadsAreBehind = m_roadOffset / (m_road.Width / 2);
 
             DrawTile(batch, m_clouds, m_roadOffset / 4, 0, 1f);
-            DrawTile(batch, m_blocks, m_roadOffset / 2, 100, 0.5f);
+            DrawTile(batch, m_blocks, m_roadOffset / 2, 100, .5f);
+            DrawTile(batch, m_wall, (int)(m_roadOffset / 1.5), 218, 1f);
 
             int homeLayerOffset = (int)(m_roadOffset / 1.5);
             float homeLayerScale = 0.25f;
-            for (int wi = 0; wi < m_wall1Coordinates.Length; wi++)
-            {
-                batch.Draw(m_wall1, new Rectangle(m_wall1Coordinates[wi] - homeLayerOffset, WALLSY, (int)(m_wall1.Width * homeLayerScale), (int)(m_wall1.Height * homeLayerScale)), Color.White);
-            }
-            for (int wi = 0; wi < m_wall2Coordinates.Length; wi++)
-            {
-                batch.Draw(m_wall2, new Rectangle(m_wall2Coordinates[wi] - homeLayerOffset, WALLSY, (int)(m_wall2.Width * homeLayerScale), (int)(m_wall2.Height * homeLayerScale)), Color.White);
-            }
-            for (int wi = 0; wi < m_wall3Coordinates.Length; wi++)
-            {
-                batch.Draw(m_wall3, new Rectangle(m_wall3Coordinates[wi] - homeLayerOffset, WALLSY, (int)(m_wall3.Width * homeLayerScale), (int)(m_wall3.Height * homeLayerScale)), Color.White);
-            }
+            //for (int wi = 0; wi < m_wall1Coordinates.Length; wi++)
+            //{
+            //    batch.Draw(m_wall1, new Rectangle(m_wall1Coordinates[wi] - homeLayerOffset, WALLSY, (int)(m_wall1.Width * homeLayerScale), (int)(m_wall1.Height * homeLayerScale)), Color.White);
+            //}
+            //for (int wi = 0; wi < m_wall2Coordinates.Length; wi++)
+            //{
+            //    batch.Draw(m_wall2, new Rectangle(m_wall2Coordinates[wi] - homeLayerOffset, WALLSY, (int)(m_wall2.Width * homeLayerScale), (int)(m_wall2.Height * homeLayerScale)), Color.White);
+            //}
+            //for (int wi = 0; wi < m_wall3Coordinates.Length; wi++)
+            //{
+            //    batch.Draw(m_wall3, new Rectangle(m_wall3Coordinates[wi] - homeLayerOffset, WALLSY, (int)(m_wall3.Width * homeLayerScale), (int)(m_wall3.Height * homeLayerScale)), Color.White);
+            //}
             for (int hi = 0; hi < m_home1Coordinates.Length; hi++)
             {
                 batch.Draw(m_home1, new Rectangle(m_home1Coordinates[hi] - homeLayerOffset, HOMESY, (int)(m_home1.Width * homeLayerScale), (int)(m_home1.Height * homeLayerScale)), Color.White);
@@ -256,7 +253,11 @@ namespace Zampara
             }
 
             // ZAMPARA
-            batch.Draw(m_zamparaMan, new Rectangle((int)m_zamparaManPos.X, (int)CurrentWalkPath.Y, (int)(m_zamparaMan.Width * CurrentWalkPath.Scale), (int)(m_zamparaMan.Height * CurrentWalkPath.Scale)), Color.White);
+            float scaleFactor = 0.8f + 0.2f * (m_zamparaManPos.Y - WALK_MINY) / (WALK_MAXY - WALK_MINY);
+            batch.Draw(m_zamparaMan, new Rectangle((int)m_zamparaManPos.X, (int)m_zamparaManPos.Y, (int)(m_zamparaMan.Width * scaleFactor), (int)(m_zamparaMan.Height * scaleFactor)), Color.White);
+
+            m_animationPlayer.PlayAnimation(m_boobyWoman);
+            m_animationPlayer.Draw(_time, batch, new Vector2(100, 200), SpriteEffects.None);
 
             // BINS
             for (int bi = 0; bi < m_binPositions.Length; bi++)
@@ -273,6 +274,11 @@ namespace Zampara
 
         public override void Update(GameTime _time)
         {
+            int deltaY = (int)(m_zamparaManVerticalVelocity * _time.ElapsedGameTime.Milliseconds / 1000);
+            int newY = (int)(m_zamparaManPos.Y + deltaY);
+            newY = Math.Min(WALK_MAXY, Math.Max(WALK_MINY, newY));
+            
+
             int deltaX = (int)(m_zamparaManVelocity * _time.ElapsedGameTime.Milliseconds / 1000);
             int newX = (int)(m_zamparaManPos.X + deltaX);
             if (newX < WALK_MINX)
@@ -311,6 +317,7 @@ namespace Zampara
 
             }
             m_zamparaManPos.X = newX;
+            m_zamparaManPos.Y = newY;
 
         }
 
