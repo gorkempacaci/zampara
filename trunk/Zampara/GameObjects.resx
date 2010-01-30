@@ -130,7 +130,7 @@
     <value>150, 250, 400, 700, 1200</value>
   </data>
   <data name="Wall1" xml:space="preserve">
-    <value>150</value>
+    <value>0, 175</value>
   </data>
   <data name="Wall2" xml:space="preserve">
     <value>500</value>
