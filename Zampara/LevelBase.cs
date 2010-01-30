@@ -5,6 +5,8 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Resources;
+using System.Reflection;
 
 namespace Zampara
 {
@@ -48,9 +50,14 @@ namespace Zampara
 
         Texture2D m_zamparaMan;
         Texture2D m_road;
-        Texture2D m_barrel;
-        Texture2D m_tree1;
-        Texture2D m_tree2;
+
+        Texture2D[] m_availableTreeKinds;
+        int[] m_treePositions;
+        int[] m_treeKindIndices;
+
+        Texture2D[] m_availableBinKinds;
+        int[] m_binPositions;
+        int[] m_binKindIndices;
 
         Vector2 m_zamparaManPos;
         float m_zamparaManVelocity; // linear velocity
@@ -81,6 +88,14 @@ namespace Zampara
             get
             {
                 return Paths[m_currentWalkPathIndex];
+            }
+        }
+
+        public int CurrentPosition
+        {
+            get
+            {
+                return m_roadOffset + (int)m_zamparaManPos.X;
             }
         }
 
@@ -137,14 +152,26 @@ namespace Zampara
 
         public override void LoadContent()
         {
+            Random rand = new Random();
             m_road = Game.Content.Load<Texture2D>("road");
-            m_barrel = Game.Content.Load<Texture2D>("varil");
             m_zamparaMan = Game.Content.Load<Texture2D>("zampara_man");
-            m_tree1 = Game.Content.Load<Texture2D>("tree1");
-            m_tree2 = Game.Content.Load<Texture2D>("tree2");
+
+            m_availableTreeKinds = new Texture2D[2];
+            m_availableTreeKinds[0] = Game.Content.Load<Texture2D>("tree1");
+            m_availableTreeKinds[1] = Game.Content.Load<Texture2D>("tree2");
+
+            m_availableBinKinds = new Texture2D[1];
+            m_availableBinKinds[0] = Game.Content.Load<Texture2D>("bin");
             
             m_zamparaManPos = new Vector2(0, Game.Window.ClientBounds.Height - m_zamparaMan.Height);
             
+            // LOAD TREES
+            ResourceManager res = new ResourceManager("GameObjects.resx", Assembly.GetExecutingAssembly());
+            m_treePositions = GameObjects.Trees.Split(',').Select(x=>int.Parse(x.Trim())).ToArray();
+            m_treeKindIndices = m_treePositions.Select(x => rand.Next(0, m_availableTreeKinds.Length)).ToArray();
+            m_binPositions = GameObjects.Bins.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
+            m_binKindIndices = m_binPositions.Select(x => rand.Next(0, m_availableBinKinds.Length)).ToArray();
+
         }
 
         public override void UnloadContent()
@@ -160,13 +187,25 @@ namespace Zampara
             
             batch.Draw(m_road, new Rectangle(0 - m_roadOffset, 300, m_road.Width/2, m_road.Height/2), Color.White);
 
-            batch.Draw(m_tree1, new Rectangle(150 - m_roadOffset, 140, m_tree1.Width / 2, m_tree1.Height / 2), Color.White);
-            batch.Draw(m_tree2, new Rectangle(700 - m_roadOffset, 140, m_tree2.Width / 2, m_tree2.Height / 2), Color.White);
+            for (int ti = 0; ti < m_treePositions.Length; ti++)
+            {
+                Texture2D tree = m_availableTreeKinds[m_treeKindIndices[ti]];
+                int treePosition = m_treePositions[ti];
+                batch.Draw(tree, new Rectangle(treePosition - m_roadOffset, 140, tree.Width / 2, tree.Height / 2), Color.White);
+            }
+            for (int bi = 0; bi < m_binPositions.Length; bi++)
+            {
+                Texture2D bin = m_availableBinKinds[m_binKindIndices[bi]];
+                int binPosition = m_binPositions[bi];
+                batch.Draw(bin, new Rectangle(binPosition - m_roadOffset, 400, bin.Width / 4, bin.Height / 3), Color.White);
+            }
 
             batch.Draw(m_zamparaMan, new Rectangle((int)m_zamparaManPos.X, (int)CurrentWalkPath.Y, m_zamparaMan.Width, m_zamparaMan.Height), Color.White);
-            batch.Draw(m_barrel, new Rectangle(200 - m_roadOffset, 400, (int)(m_barrel.Width * 0.25), (int)(m_barrel.Height * 0.25)), Color.White);
 
             batch.End();
+
+
+            Game.Window.Title = CurrentPosition.ToString();
         }
 
         public override void Update(GameTime _time)
@@ -211,5 +250,6 @@ namespace Zampara
             m_zamparaManPos.X = newX;
             
         }
+
     }
 }
