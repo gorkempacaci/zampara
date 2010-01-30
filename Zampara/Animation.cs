@@ -15,7 +15,7 @@ namespace Zampara
     /// as wide as each animation is tall. The number of frames in the
     /// animation are inferred from this.
     /// </remarks>
-    class Animation
+    public class Animation
     {
         /// <summary>
         /// All frames in the animation arranged horizontally.

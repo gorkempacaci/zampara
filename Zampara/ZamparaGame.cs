@@ -29,7 +29,7 @@ namespace Zampara
 
         public ZamparaGame()
         {
-            m_currentLevel = new LevelCinema(this);
+            m_currentLevel = new LevelWalker(this); //new LevelCinema(this);
             m_graphics = new GraphicsDeviceManager(this);
             m_graphics.PreferredBackBufferWidth = 800;
             m_graphics.PreferredBackBufferHeight = 500;
