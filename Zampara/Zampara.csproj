@@ -95,6 +95,7 @@
       <DependentUpon>GameObjects.resx</DependentUpon>
     </Compile>
     <Compile Include="LevelCinema.cs" />
+    <Compile Include="LevelCredits.cs" />
     <Compile Include="LevelGameOver.cs" />
     <Compile Include="LevelWalker.cs" />
     <Compile Include="LevelWin.cs" />

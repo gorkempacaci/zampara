@@ -5,12 +5,15 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 
 namespace Zampara
 {
     class LevelWin : LevelBase
     {
         Texture2D m_image;
+        double m_firstSeconds = 0;
+        double m_lastSeconds = 0;
 
         public LevelWin(ZamparaGame _game)
             : base(_game)
@@ -28,12 +31,16 @@ namespace Zampara
 
         void KeyboardEvents_HandleKBKeyDown(Keys[] klist, Keys focus, InputHandlers.Keyboard.KBModifiers m)
         {
-            Game.Restart();
+            if (m_lastSeconds - m_firstSeconds > 2)
+            {
+                Game.SwitchToCredits();
+            }
         }
 
         public override void LoadContent()
         {
             m_image = Game.Content.Load<Texture2D>("win");
+            Game.Content.Load<SoundEffect>("applause").Play();
         }
 
         public override void UnloadContent()
@@ -54,7 +61,11 @@ namespace Zampara
 
         public override void Update(GameTime _time)
         {
-            
+            if (m_firstSeconds == 0)
+            {
+                m_firstSeconds = _time.TotalGameTime.TotalSeconds;
+            }
+            m_lastSeconds = _time.TotalGameTime.TotalSeconds;
         }
     }
 }

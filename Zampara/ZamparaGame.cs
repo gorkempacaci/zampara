@@ -13,6 +13,7 @@ using Microsoft.Xna.Framework.Storage;
 
 using InputHandlers.Mouse;
 using InputHandlers.Keyboard;
+using System.IO;
 
 
 namespace Zampara
@@ -41,6 +42,11 @@ namespace Zampara
             m_graphics = new GraphicsDeviceManager(this);
             m_graphics.PreferredBackBufferWidth = 800;
             m_graphics.PreferredBackBufferHeight = 500;
+            if (File.Exists(Directory.GetCurrentDirectory() + "fullscreen.txt"))
+            {
+                m_graphics.IsFullScreen = true;
+            }
+            
             KeyboardEvents = KBHandler.Instance;
             Content.RootDirectory = "Content";
         }
@@ -132,6 +138,14 @@ namespace Zampara
         {
             m_currentLevel.UnloadContent();
             m_currentLevel = new LevelWin(this);
+            m_currentLevel.Initialize();
+            m_currentLevel.LoadContent();
+        }
+
+        public void SwitchToCredits()
+        {
+            m_currentLevel.UnloadContent();
+            m_currentLevel = new LevelCredits(this);
             m_currentLevel.Initialize();
             m_currentLevel.LoadContent();
         }

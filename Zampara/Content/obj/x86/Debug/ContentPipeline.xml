@@ -83,15 +83,6 @@
       <Time>2010-01-30T05:43:35.84375+02:00</Time>
     </Item>
     <Item>
-      <Source>radialblur.fx</Source>
-      <Name>radialblur</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\radialblur.xnb</Output>
-      <Time>2008-03-18T13:39:36+02:00</Time>
-    </Item>
-    <Item>
       <Source>cine1.PNG</Source>
       <Name>cine1</Name>
       <Importer>TextureImporter</Importer>
@@ -107,7 +98,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\cine2.xnb</Output>
-      <Time>2010-01-31T08:22:24.546875+02:00</Time>
+      <Time>2010-01-31T13:27:50.609375+02:00</Time>
     </Item>
     <Item>
       <Source>boobywoman.png</Source>
@@ -164,15 +155,6 @@
       <Time>2010-01-31T05:28:59.59375+02:00</Time>
     </Item>
     <Item>
-      <Source>bin-hidein.png</Source>
-      <Name>bin-hidein</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\bin-hidein.xnb</Output>
-      <Time>2010-01-30T23:14:41.328125+02:00</Time>
-    </Item>
-    <Item>
       <Source>behlul-hurt.png</Source>
       <Name>behlul-hurt</Name>
       <Importer>TextureImporter</Importer>
@@ -182,13 +164,13 @@
       <Time>2010-01-30T23:20:43.546875+02:00</Time>
     </Item>
     <Item>
-      <Source>Hud.spritefont</Source>
-      <Name>Hud</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
+      <Source>bin-hidein.png</Source>
+      <Name>bin-hidein</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\Hud.xnb</Output>
-      <Time>2009-05-14T11:57:52+03:00</Time>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\bin-hidein.xnb</Output>
+      <Time>2010-01-30T23:14:41.328125+02:00</Time>
     </Item>
     <Item>
       <Source>gameover.PNG</Source>
@@ -216,16 +198,6 @@
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\hand.xnb</Output>
       <Time>2010-01-31T04:22:51.125+02:00</Time>
-    </Item>
-    <Item>
-      <Source>wftsw.mp3</Source>
-      <Name>wftsw</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wftsw.xnb</Output>
-      <Extra>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wftsw.wma</Extra>
-      <Time>2010-01-31T03:47:20.1875+02:00</Time>
     </Item>
     <Item>
       <Source>behlul-ayakkabi.png</Source>
@@ -315,7 +287,80 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\win.xnb</Output>
-      <Time>2010-01-31T08:20:23.390625+02:00</Time>
+      <Time>2010-01-31T13:09:49.359375+02:00</Time>
+    </Item>
+    <Item>
+      <Source>radialblur.fx</Source>
+      <Name>radialblur</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\radialblur.xnb</Output>
+      <Time>2008-03-18T13:39:36+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Hud.spritefont</Source>
+      <Name>Hud</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\Hud.xnb</Output>
+      <Time>2009-05-14T11:57:52+03:00</Time>
+    </Item>
+    <Item>
+      <Source>wftsw.mp3</Source>
+      <Name>wftsw</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wftsw.xnb</Output>
+      <Extra>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wftsw.wma</Extra>
+      <Time>2010-01-31T11:52:20.96875+02:00</Time>
+    </Item>
+    <Item>
+      <Source>applause.wav</Source>
+      <Name>applause</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\applause.xnb</Output>
+      <Time>2010-01-31T13:03:59.921875+02:00</Time>
+    </Item>
+    <Item>
+      <Source>sigh.wav</Source>
+      <Name>sigh</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\sigh.xnb</Output>
+      <Time>2010-01-31T13:03:42.765625+02:00</Time>
+    </Item>
+    <Item>
+      <Source>umbrella.wav</Source>
+      <Name>umbrella</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\umbrella.xnb</Output>
+      <Time>2010-01-31T13:03:50.953125+02:00</Time>
+    </Item>
+    <Item>
+      <Source>collect.wav</Source>
+      <Name>collect</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\collect.xnb</Output>
+      <Time>2010-01-31T13:04:08.578125+02:00</Time>
+    </Item>
+    <Item>
+      <Source>win2.png</Source>
+      <Name>win2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\win2.xnb</Output>
+      <Time>2010-01-31T13:28:44.578125+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
