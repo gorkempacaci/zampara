@@ -97,6 +97,7 @@
     <Compile Include="LevelCinema.cs" />
     <Compile Include="LevelGameOver.cs" />
     <Compile Include="LevelWalker.cs" />
+    <Compile Include="LevelWin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ZamparaGame.cs" />

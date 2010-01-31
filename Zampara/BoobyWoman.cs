@@ -16,6 +16,7 @@ namespace Zampara
             Hitting
         }
 
+        static Random rnd = new Random();
         Animation m_animation;
         Animation m_hitAnimation;
 
@@ -62,9 +63,10 @@ namespace Zampara
         public BoobyWoman(ZamparaGame _game)
             :base(_game)
         {
+            
             State = BoobyWomanState.Walking;
             Facing = FaceDirection.Left;
-            Velocity = new Vector2(-50, 0);
+            Velocity = new Vector2((int)(-50 - 200 * rnd.NextDouble()), 0);
         }
 
         public override int Height
