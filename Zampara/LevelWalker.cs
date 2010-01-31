@@ -25,7 +25,7 @@ namespace Zampara
 
         Effect m_blurEffect;
 
-        
+        SpriteFont m_font;
 
         Texture2D m_wall;
         Texture2D m_road;
@@ -53,16 +53,12 @@ namespace Zampara
 
         public int RoadOffset = 0;
 
-        BoobyWoman m_boobyWoman;
+        BoobyWoman[] m_boobyWoman;
         ZamparaMan m_zamparaMan;
 
         public LevelWalker(ZamparaGame _game)
             : base(_game)
         {
-            m_boobyWoman = new BoobyWoman(this.Game);
-            m_boobyWoman.Position = new Vector2(500, 450);
-            m_boobyWoman.Velocity = new Vector2(0, 0);
-
             Paths = new WalkPath[]
             {
                  new WalkPath{Y=220, Scale=0.8f},
@@ -108,14 +104,15 @@ namespace Zampara
 
         public override void LoadContent()
         {
+            m_font = Game.Content.Load<SpriteFont>("Hud");
+
             Random rand = new Random();
 
 
             m_road = Game.Content.Load<Texture2D>("road");
             
             m_blurEffect = Game.Content.Load<Effect>("radialblur");
-            m_boobyWoman.Load();
-            m_boobyWoman.IsEnabled = true;
+
             m_zamparaMan.Load();
             m_zamparaMan.IsEnabled = true;
 
@@ -145,12 +142,19 @@ namespace Zampara
             m_binPositions = GameObjects.Bins.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
             m_binKindIndices = m_binPositions.Select(x => rand.Next(0, m_availableBinKinds.Length)).ToArray();
 
-            m_wall1Coordinates = GameObjects.Wall1.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
-            m_wall2Coordinates = GameObjects.Wall2.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
-            m_wall3Coordinates = GameObjects.Wall3.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
-
             m_home1Coordinates = GameObjects.Home1.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
             m_home2Coordinates = GameObjects.Home2.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
+
+            int[] boobyCoordinates = GameObjects.BoobyWoman.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
+            m_boobyWoman = new BoobyWoman[boobyCoordinates.Length];
+            for (int i = 0; i < boobyCoordinates.Length; i++)
+            {
+                m_boobyWoman[i] = new BoobyWoman(Game);
+                m_boobyWoman[i].Load();
+                m_boobyWoman[i].Position.X = boobyCoordinates[i];
+                m_boobyWoman[i].Position.Y = (float)(WALK_MINY + (WALK_MAXY - WALK_MINY) * rand.NextDouble());
+                m_boobyWoman[i].IsEnabled = false;
+            }
         }
 
         public override void UnloadContent()
@@ -213,7 +217,10 @@ namespace Zampara
                 batch.Draw(tree, new Rectangle(treePosition - RoadOffset, 140, tree.Width / 2, tree.Height / 2), Color.White);
             }
 
-            m_boobyWoman.Draw(_time, batch, -RoadOffset);
+            foreach (BoobyWoman b in m_boobyWoman)
+            {
+                b.Draw(_time, batch, -RoadOffset);
+            }
 
             // ZAMPARA
             m_zamparaMan.Draw(_time, batch, 0);
@@ -228,34 +235,61 @@ namespace Zampara
 
             DrawTile(batch, m_grass, (int)(RoadOffset * 1.2), 343, 0.4f);
 
+            batch.DrawString(m_font, "Health:" + m_zamparaMan.Health.ToString("#"), new Vector2(5, 5), Color.Black);
+
             batch.End();
         }
 
         public override void Update(GameTime _time)
         {
-            m_boobyWoman.Update(_time);
+            foreach (BoobyWoman b in m_boobyWoman)
+            {
+                b.Update(_time);
+            }
+            
             m_zamparaMan.Update(_time);
+
+            foreach (BoobyWoman b in m_boobyWoman)
+            {
+                if (b.Position.X - m_zamparaMan.Position.X - RoadOffset < 800)
+                {
+                    b.IsEnabled = true;
+                }
+                else
+                {
+                    b.IsEnabled = b.IsEnabled;
+                }
+            }
+
+            if (m_zamparaMan.Health <= 0)
+            {
+                Game.SwitchToGameOver();
+                return;
+            }
 
             CheckForCollisionsAndAct();
         }
 
         public void CheckForCollisionsAndAct()
         {
-            Rectangle rectBoobywoman = m_boobyWoman.Rectangle;
-            Rectangle rectZampara = m_zamparaMan.Rectangle;
-
-            //rectBoobywoman.Inflate(-50, -50);
-            //rectZampara.Inflate(-50, -50);
-
-            if (rectBoobywoman.Intersects(rectZampara))
+            foreach (BoobyWoman b in m_boobyWoman.Where(x => x.IsEnabled))
             {
-                m_boobyWoman.State = BoobyWoman.BoobyWomanState.Hitting;
-                m_zamparaMan.State = ZamparaMan.ZamparaManState.GettingHit;
-            }
-            else
-            {
-                m_boobyWoman.State = BoobyWoman.BoobyWomanState.Walking;
-                m_zamparaMan.State = ZamparaMan.ZamparaManState.Walking;
+                Rectangle rectBoobywoman = b.Rectangle;
+                Rectangle rectZampara = m_zamparaMan.Rectangle;
+
+                //rectBoobywoman.Inflate(-50, -50);
+                //rectZampara.Inflate(-50, -50);
+
+                if (rectBoobywoman.Intersects(rectZampara))
+                {
+                    b.State = BoobyWoman.BoobyWomanState.Hitting;
+                    m_zamparaMan.State = ZamparaMan.ZamparaManState.GettingHit;
+                }
+                else
+                {
+                    b.State = BoobyWoman.BoobyWomanState.Walking;
+                    m_zamparaMan.State = ZamparaMan.ZamparaManState.Walking;
+                }
             }
         }
     }

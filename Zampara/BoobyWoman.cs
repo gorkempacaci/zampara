@@ -54,6 +54,7 @@ namespace Zampara
         {
             State = BoobyWomanState.Walking;
             Facing = FaceDirection.Left;
+            Velocity = new Vector2(-50, 0);
         }
 
         public override int Height

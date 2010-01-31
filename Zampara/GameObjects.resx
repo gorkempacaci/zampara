@@ -120,6 +120,9 @@
   <data name="Bins" xml:space="preserve">
     <value>200, 600, 900, 1100, 1500</value>
   </data>
+  <data name="BoobyWoman" xml:space="preserve">
+    <value>600, 1200, 1700, 1900, 2500, 2600, 2700</value>
+  </data>
   <data name="Home1" xml:space="preserve">
     <value>1300</value>
   </data>
@@ -128,14 +131,5 @@
   </data>
   <data name="Trees" xml:space="preserve">
     <value>150, 250, 400, 700, 1200</value>
-  </data>
-  <data name="Wall1" xml:space="preserve">
-    <value>0, 175, 525</value>
-  </data>
-  <data name="Wall2" xml:space="preserve">
-    <value>350, 700</value>
-  </data>
-  <data name="Wall3" xml:space="preserve">
-    <value>875</value>
   </data>
 </root>

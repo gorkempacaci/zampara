@@ -42,7 +42,7 @@ namespace Zampara
         {
             get
             {
-                return new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
+                return new Rectangle((int)Position.X + (Game.CurrentLevel as LevelWalker).RoadOffset, (int)Position.Y, Width, Height);
             }
         }
 
