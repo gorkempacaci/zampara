@@ -19,6 +19,7 @@ namespace Zampara
         static Random rnd = new Random();
         Animation m_animation;
         Animation m_hitAnimation;
+        public int Index;
 
         public BoobyWomanState State;
 

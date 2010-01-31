@@ -51,3 +51,8 @@ C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\pants.xnb
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\target4.xnb
 C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\win.xnb
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\applause.xnb
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\sigh.xnb
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\umbrella.xnb
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\collect.xnb
+C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\win2.xnb

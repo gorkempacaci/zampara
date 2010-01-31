@@ -7,7 +7,6 @@ Content\clouds.xnb
 Content\grass.xnb
 Content\home1.xnb
 Content\home2.xnb
-Content\radialblur.xnb
 Content\cine1.xnb
 Content\cine2.xnb
 Content\boobywoman.xnb
@@ -16,13 +15,11 @@ Content\wall.xnb
 Content\boobywoman-hit.xnb
 Content\lady-walk.xnb
 Content\behlul.xnb
-Content\bin-hidein.xnb
 Content\behlul-hurt.xnb
-Content\Hud.xnb
+Content\bin-hidein.xnb
 Content\gameover.xnb
 Content\behlul-gomlek.xnb
 Content\hand.xnb
-Content\wftsw.xnb
 Content\behlul-ayakkabi.xnb
 Content\hearts.xnb
 Content\shirt.xnb
@@ -33,4 +30,12 @@ Content\target3.xnb
 Content\pants.xnb
 Content\target4.xnb
 Content\win.xnb
+Content\radialblur.xnb
+Content\Hud.xnb
+Content\wftsw.xnb
+Content\applause.xnb
+Content\sigh.xnb
+Content\umbrella.xnb
+Content\collect.xnb
+Content\win2.xnb
 Content\wftsw.wma

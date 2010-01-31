@@ -31,6 +31,11 @@ namespace Zampara
         Animation m_hand;
         Song m_backgroundMusic;
 
+        SoundEffect m_marioCoin;
+
+        SoundEffect m_umbrella;
+        SoundEffectInstance[] m_umbrellaInstances;
+
         SpriteFont m_font;
 
         Texture2D m_wall;
@@ -146,6 +151,10 @@ namespace Zampara
             MediaPlayer.Play(m_backgroundMusic);
             MediaPlayer.Volume = 0.1f;
 
+            m_marioCoin = Game.Content.Load<SoundEffect>("collect");
+
+            m_umbrella = Game.Content.Load<SoundEffect>("umbrella");
+            
             m_font = Game.Content.Load<SpriteFont>("Hud");
 
             Random rand = new Random();
@@ -209,20 +218,24 @@ namespace Zampara
 
             int[] boobyCoordinates = GameObjects.BoobyWoman.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
             m_boobyWoman = new BoobyWoman[boobyCoordinates.Length];
+            m_umbrellaInstances = new SoundEffectInstance[boobyCoordinates.Length];
             for (int i = 0; i < boobyCoordinates.Length; i++)
             {
                 m_boobyWoman[i] = new BoobyWoman(Game);
+                m_umbrellaInstances[i] = m_umbrella.CreateInstance();
                 m_boobyWoman[i].Load();
                 m_boobyWoman[i].Position.X = boobyCoordinates[i];
                 m_boobyWoman[i].Position.Y = (float)(WALK_MINY + (WALK_MAXY - WALK_MINY) * rand.NextDouble());
                 m_boobyWoman[i].IsEnabled = false;
+                m_boobyWoman[i].Index = i;
             }
             m_boobyWoman = m_boobyWoman.OrderBy(x => x.Position.Y).ToArray();
         }
 
         public override void UnloadContent()
         {
-
+            MediaPlayer.Stop();
+            Game.KeyboardEvents.HandleKBKeyDown -= KeyboardEvents_HandleKBKeyDown;
         }
 
         public void DrawTile(SpriteBatch _batch, Texture2D _bitmap, int _offset, int _y, float _scale)
@@ -384,25 +397,28 @@ namespace Zampara
                     }
                 }
 
-                if (m_zamparaMan.Position.X + RoadOffset >= m_shoePos.X)
+                if (m_zamparaMan.Position.X + RoadOffset >= m_shoePos.X && m_shoePos.X > 0)
                 {
                     m_zamparaMan.GrantShoes();
                     m_shoePos.X = -500;
                     m_targetDisplay = m_target2;
+                    m_marioCoin.Play();                    
                 }
 
-                if (m_zamparaMan.Position.X + RoadOffset >= m_shirtPos.X)
+                if (m_zamparaMan.Position.X + RoadOffset >= m_shirtPos.X && m_shirtPos.X > 0)
                 {
                     m_zamparaMan.GrantShirt();
                     m_shirtPos.X = -500;
                     m_targetDisplay = m_target3;
+                    m_marioCoin.Play();
                 }
 
-                if (m_zamparaMan.Position.X + RoadOffset >= m_pantsPos.X)
+                if (m_zamparaMan.Position.X + RoadOffset >= m_pantsPos.X && m_pantsPos.X > 0)
                 {
                     m_pantsPos.X = -500;
                     m_targetDisplay = m_target4;
                     Game.SwitchToWinGame();
+                    m_marioCoin.Play();
                 }
 
 
@@ -411,6 +427,10 @@ namespace Zampara
                     foreach (var b in hittingWomen)
                     {
                         b.State = BoobyWoman.BoobyWomanState.Hitting;
+                        if (m_umbrellaInstances[b.Index].State != SoundState.Playing)
+                        {
+                            m_umbrellaInstances[b.Index].Play();
+                        }
                     }
                     m_zamparaMan.State = ZamparaMan.ZamparaManState.GettingHit;
                 }

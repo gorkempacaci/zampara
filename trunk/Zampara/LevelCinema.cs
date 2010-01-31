@@ -22,6 +22,9 @@ namespace Zampara
         Effect m_blurEffect;
         ScenarioState m_state;
 
+        double beginTime;
+        double lastTime;
+
         public LevelCinema(ZamparaGame _game)
             : base(_game)
         {
@@ -74,9 +77,20 @@ namespace Zampara
 
         public override void Update(GameTime _time)
         {
-            if (_time.TotalGameTime.TotalSeconds > 3)
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                if (_time.TotalGameTime.TotalSeconds > 6)
+                Game.Exit();
+            }
+
+            if (beginTime == 0)
+            {
+                beginTime = _time.TotalGameTime.TotalSeconds;
+            }
+            lastTime = _time.TotalGameTime.TotalSeconds;
+
+            if (lastTime - beginTime > 3)
+            {
+                if (lastTime - beginTime > 6)
                 {
                     m_state = ScenarioState.WindowFocus;
                 }
