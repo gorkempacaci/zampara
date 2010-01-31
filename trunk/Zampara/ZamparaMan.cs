@@ -13,15 +13,29 @@ namespace Zampara
         const float GETTING_HIT_PENALTY_PER_SECOND = 20f;
         Animation m_walkingAnimation;
         Texture2D m_imageHit;
-        public ZamparaManState State;
+
+        private ZamparaManState m_state;
+        public ZamparaManState State
+        {
+            get
+            {
+                return m_state;
+            }
+            set
+            {
+                m_state = value;
+            }
+        }
+
         public float Health = 100f;
+        public int HidingInsideBinIndex = -1;
 
         public enum ZamparaManState
         {
             Waiting,
             Walking,
             HidingBehindTree,
-            HindingBehindBin,
+            HidingInsideBin,
             GettingHit
         }
 
@@ -33,7 +47,7 @@ namespace Zampara
 
         public override void Load()
         {
-            m_walkingAnimation = new Animation(Game.Content.Load<Texture2D>("behlul"), 0.25f, true, 8);
+            m_walkingAnimation = new Animation(Game.Content.Load<Texture2D>("behlul"), 0.15f, true, 10);
             m_imageHit = Game.Content.Load<Texture2D>("behlul-hurt");
         }
 
@@ -103,6 +117,19 @@ namespace Zampara
             get { return (int)Position.Y; }
         }
 
+        public void HideInsideBin(int binIndex)
+        {
+            HidingInsideBinIndex = binIndex;
+            State = ZamparaManState.HidingInsideBin;
+            Velocity = new Vector2();
+        }
+
+        public void GetOutOfBin()
+        {
+            State = ZamparaManState.Waiting;
+            HidingInsideBinIndex = -1;
+        }
+
         public override void Draw(GameTime _time, SpriteBatch _batch, int _offset)
         {
             float scaleFactor = 0.8f + 0.2f * (Position.Y - LevelWalker.WALK_MINY) / (LevelWalker.WALK_MAXY - LevelWalker.WALK_MINY);
@@ -110,6 +137,9 @@ namespace Zampara
             {
                 case ZamparaManState.GettingHit:
                     _batch.Draw(m_imageHit, new Rectangle((int)(Position.X - _offset - 90), (int)Position.Y - Height + 20, (int)(Width * scaleFactor), (int)(Height * scaleFactor)), Color.White);
+                    break;
+                case ZamparaManState.HidingInsideBin:
+                    // no draw.
                     break;
                 default:
                     m_animationPlayer.PlayAnimation(m_walkingAnimation);
@@ -123,33 +153,42 @@ namespace Zampara
         public void HandleInput()
         {
             KeyboardState key = Keyboard.GetState();
-
-            if (key.IsKeyDown(Keys.Right))
+            if (State == ZamparaManState.HidingInsideBin)
             {
-                Velocity.X = LevelWalker.WALKING_VELOCITY;
-                Facing = FaceDirection.Right;
-            }
-            else if (key.IsKeyDown(Keys.Left))
-            {
-                Velocity.X = -LevelWalker.WALKING_VELOCITY;
-                Facing = FaceDirection.Left;
+                if (key.IsKeyDown(Keys.Up))
+                {
+                    this.GetOutOfBin();
+                }
             }
             else
             {
-                Velocity.X = 0f;
-            }
+                if (key.IsKeyDown(Keys.Right))
+                {
+                    Velocity.X = LevelWalker.WALKING_VELOCITY;
+                    Facing = FaceDirection.Right;
+                }
+                else if (key.IsKeyDown(Keys.Left))
+                {
+                    Velocity.X = -LevelWalker.WALKING_VELOCITY;
+                    Facing = FaceDirection.Left;
+                }
+                else
+                {
+                    Velocity.X = 0f;
+                }
 
-            if (key.IsKeyDown(Keys.Down))
-            {
-                Velocity.Y = (int)(LevelWalker.WALKING_VELOCITY * 0.7);
-            }
-            else if (key.IsKeyDown(Keys.Up))
-            {
-                Velocity.Y = (int)(-LevelWalker.WALKING_VELOCITY * 0.7);
-            }
-            else
-            {
-                Velocity.Y = 0f;
+                if (key.IsKeyDown(Keys.Down))
+                {
+                    Velocity.Y = (int)(LevelWalker.WALKING_VELOCITY * 0.7);
+                }
+                else if (key.IsKeyDown(Keys.Up))
+                {
+                    Velocity.Y = (int)(-LevelWalker.WALKING_VELOCITY * 0.7);
+                }
+                else
+                {
+                    Velocity.Y = 0f;
+                }
             }
         }
 

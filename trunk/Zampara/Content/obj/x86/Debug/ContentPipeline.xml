@@ -161,7 +161,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\behlul.xnb</Output>
-      <Time>2010-01-30T23:09:36.46875+02:00</Time>
+      <Time>2010-01-31T04:11:22.8125+02:00</Time>
     </Item>
     <Item>
       <Source>bin-hidein.png</Source>
@@ -171,15 +171,6 @@
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\bin-hidein.xnb</Output>
       <Time>2010-01-30T23:14:41.328125+02:00</Time>
-    </Item>
-    <Item>
-      <Source>hand-sprites.png</Source>
-      <Name>hand-sprites</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\hand-sprites.xnb</Output>
-      <Time>2010-01-30T23:45:33.109375+02:00</Time>
     </Item>
     <Item>
       <Source>behlul-hurt.png</Source>
@@ -206,16 +197,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\gameover.xnb</Output>
-      <Time>2010-01-31T02:12:31.703125+02:00</Time>
-    </Item>
-    <Item>
-      <Source>behlul-ayakabi.png</Source>
-      <Name>behlul-ayakabi</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\behlul-ayakabi.xnb</Output>
-      <Time>2010-01-31T00:03:25.046875+02:00</Time>
+      <Time>2010-01-31T04:52:39.4375+02:00</Time>
     </Item>
     <Item>
       <Source>behlul-gomlek.png</Source>
@@ -224,7 +206,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\behlul-gomlek.xnb</Output>
-      <Time>2010-01-31T02:31:54.34375+02:00</Time>
+      <Time>2010-01-31T04:09:42.484375+02:00</Time>
     </Item>
     <Item>
       <Source>hand.png</Source>
@@ -233,7 +215,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\hand.xnb</Output>
-      <Time>2010-01-31T03:36:19.21875+02:00</Time>
+      <Time>2010-01-31T04:22:51.125+02:00</Time>
     </Item>
     <Item>
       <Source>wftsw.mp3</Source>
@@ -244,6 +226,15 @@
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wftsw.xnb</Output>
       <Extra>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wftsw.wma</Extra>
       <Time>2010-01-31T03:47:20.1875+02:00</Time>
+    </Item>
+    <Item>
+      <Source>behlul-ayakkabi.png</Source>
+      <Name>behlul-ayakkabi</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\behlul-ayakkabi.xnb</Output>
+      <Time>2010-01-31T04:09:42.375+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
