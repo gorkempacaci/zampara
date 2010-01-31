@@ -35,6 +35,16 @@ namespace Zampara
             m_hitAnimation = new Animation(Game.Content.Load<Texture2D>("boobywoman-hit"), 0.1f, true, 3);
         }
 
+        public override int DrawX
+        {
+            get { return (int)(Position.X - WalkerLevel.RoadOffset); }
+        }
+
+        public override int DrawY
+        {
+            get { return (int)Position.Y; }
+        }
+
         public override void Draw(GameTime _time, SpriteBatch _batch, int _offset)
         {
             switch (State)
@@ -46,7 +56,7 @@ namespace Zampara
                     m_animationPlayer.PlayAnimation(m_hitAnimation);
                     break;
             }
-            m_animationPlayer.Draw(_time, _batch, new Vector2(Position.X + _offset, Position.Y), Facing == FaceDirection.Left ? SpriteEffects.None : SpriteEffects.FlipHorizontally);
+            m_animationPlayer.Draw(_time, _batch, new Vector2(DrawX, DrawY), Facing == FaceDirection.Left ? SpriteEffects.None : SpriteEffects.FlipHorizontally);
         }
 
         public BoobyWoman(ZamparaGame _game)

@@ -93,19 +93,29 @@ namespace Zampara
 
         }
 
+        public override int DrawX
+        {
+            get { return (int)Position.X; }
+        }
+
+        public override int DrawY
+        {
+            get { return (int)Position.Y; }
+        }
+
         public override void Draw(GameTime _time, SpriteBatch _batch, int _offset)
         {
             float scaleFactor = 0.8f + 0.2f * (Position.Y - LevelWalker.WALK_MINY) / (LevelWalker.WALK_MAXY - LevelWalker.WALK_MINY);
             switch (State)
             {
                 case ZamparaManState.GettingHit:
-                    _batch.Draw(m_imageHit, new Rectangle((int)(Position.X + _offset - 90), (int)Position.Y - Height + 20, (int)(Width * scaleFactor), (int)(Height * scaleFactor)), Color.White);
+                    _batch.Draw(m_imageHit, new Rectangle((int)(Position.X - _offset - 90), (int)Position.Y - Height + 20, (int)(Width * scaleFactor), (int)(Height * scaleFactor)), Color.White);
                     break;
                 default:
                     m_animationPlayer.PlayAnimation(m_walkingAnimation);
                     GameTime animationTime;
                     animationTime = _time;
-                    m_animationPlayer.Draw(animationTime, _batch, new Vector2(Position.X + _offset, Position.Y), (Facing == FaceDirection.Right ? SpriteEffects.None : SpriteEffects.FlipHorizontally), scaleFactor, !IsMoving);
+                    m_animationPlayer.Draw(animationTime, _batch, new Vector2(DrawX, DrawY), (Facing == FaceDirection.Right ? SpriteEffects.None : SpriteEffects.FlipHorizontally), scaleFactor, !IsMoving);
                     break;
             }
         }
