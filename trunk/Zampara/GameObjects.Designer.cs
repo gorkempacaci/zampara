@@ -70,7 +70,7 @@ namespace Zampara {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 600, 1200, 1700, 1900, 2500, 2600, 2700.
+        ///   Looks up a localized string similar to 600, 1200, 1700, 1900, 2500, 2600, 2700, 2800, 3300, 3600, 3650, 3700, 4000, 4500, 4550, 4600.
         /// </summary>
         internal static string BoobyWoman {
             get {
@@ -93,6 +93,33 @@ namespace Zampara {
         internal static string Home2 {
             get {
                 return ResourceManager.GetString("Home2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 4500.
+        /// </summary>
+        internal static string Pants {
+            get {
+                return ResourceManager.GetString("Pants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3000.
+        /// </summary>
+        internal static string Shirt {
+            get {
+                return ResourceManager.GetString("Shirt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1500.
+        /// </summary>
+        internal static string Shoes {
+            get {
+                return ResourceManager.GetString("Shoes", resourceCulture);
             }
         }
         

@@ -226,6 +226,25 @@
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\behlul-gomlek.xnb</Output>
       <Time>2010-01-31T02:31:54.34375+02:00</Time>
     </Item>
+    <Item>
+      <Source>hand.png</Source>
+      <Name>hand</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\hand.xnb</Output>
+      <Time>2010-01-31T03:36:19.21875+02:00</Time>
+    </Item>
+    <Item>
+      <Source>wftsw.mp3</Source>
+      <Name>wftsw</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wftsw.xnb</Output>
+      <Extra>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\wftsw.wma</Extra>
+      <Time>2010-01-31T03:47:20.1875+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
