@@ -32,3 +32,5 @@ Content\target1.xnb
 Content\target2.xnb
 Content\target3.xnb
 Content\pants.xnb
+Content\target4.xnb
+Content\win.xnb

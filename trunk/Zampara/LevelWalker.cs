@@ -163,6 +163,7 @@ namespace Zampara
             m_target1 = Game.Content.Load<Texture2D>("target1");
             m_target2 = Game.Content.Load<Texture2D>("target2");
             m_target3 = Game.Content.Load<Texture2D>("target3");
+            m_target4 = Game.Content.Load<Texture2D>("target4");
             m_targetDisplay = m_target1;
 
             m_clouds = Game.Content.Load<Texture2D>("clouds");
@@ -401,6 +402,7 @@ namespace Zampara
                 {
                     m_pantsPos.X = -500;
                     m_targetDisplay = m_target4;
+                    Game.SwitchToWinGame();
                 }
 
 
