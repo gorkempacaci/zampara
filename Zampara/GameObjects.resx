@@ -121,12 +121,21 @@
     <value>200, 600, 900, 1100, 1500</value>
   </data>
   <data name="BoobyWoman" xml:space="preserve">
-    <value>600, 1200, 1700, 1900, 2500, 2600, 2700</value>
+    <value>600, 1200, 1700, 1900, 2500, 2600, 2700, 2800, 3300, 3600, 3650, 3700, 4000, 4500, 4550, 4600</value>
   </data>
   <data name="Home1" xml:space="preserve">
     <value>1300</value>
   </data>
   <data name="Home2" xml:space="preserve">
+    <value>1500</value>
+  </data>
+  <data name="Pants" xml:space="preserve">
+    <value>4500</value>
+  </data>
+  <data name="Shirt" xml:space="preserve">
+    <value>3000</value>
+  </data>
+  <data name="Shoes" xml:space="preserve">
     <value>1500</value>
   </data>
   <data name="Trees" xml:space="preserve">
