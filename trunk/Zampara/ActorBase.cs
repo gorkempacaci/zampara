@@ -68,4 +68,43 @@ namespace Zampara
         public abstract void Draw(GameTime _time, SpriteBatch _batch, int _offset);
 
     }
+
+    public class WalkingLady : ActorBase
+    {
+        public WalkingLady(ZamparaGame _game)
+            :base(_game)
+        { 
+        
+        }
+
+        public override int Height
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public override int Width
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public override int DrawX
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public override int DrawY
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public override void Load()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Draw(GameTime _time, SpriteBatch _batch, int _offset)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

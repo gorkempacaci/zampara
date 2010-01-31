@@ -25,3 +25,10 @@ Content\hand.xnb
 Content\wftsw.xnb
 Content\wftsw.wma
 Content\behlul-ayakkabi.xnb
+Content\hearts.xnb
+Content\shirt.xnb
+Content\shoes.xnb
+Content\target1.xnb
+Content\target2.xnb
+Content\target3.xnb
+Content\pants.xnb

@@ -38,6 +38,22 @@ namespace Zampara
         Texture2D m_clouds;
         Texture2D m_blocks;
         Texture2D m_grass;
+        Texture2D m_hearts;
+
+        Texture2D m_target1;
+        Texture2D m_target2;
+        Texture2D m_target3;
+        Texture2D m_target4;
+        Texture2D m_targetDisplay;
+
+        Texture2D m_shoes;
+        Vector2 m_shoePos;
+
+        Texture2D m_shirt;
+        Vector2 m_shirtPos;
+
+        Texture2D m_pants;
+        Vector2 m_pantsPos;
 
         Texture2D m_home1;
         Texture2D m_home2;
@@ -97,7 +113,10 @@ namespace Zampara
 
         void KeyboardEvents_HandleKBKeyDown(Keys[] klist, Keys focus, InputHandlers.Keyboard.KBModifiers m)
         {
-
+            if (focus == Keys.Escape)
+            {
+                Game.Exit();
+            }
         }
 
         public override void HandleInput()
@@ -105,7 +124,7 @@ namespace Zampara
             KeyboardState keyState = Keyboard.GetState();
             m_zamparaMan.HandleInput(); // for controlling the guy
             // if he's going down
-            if (keyState.IsKeyDown(Keys.Down))
+            if (keyState.IsKeyDown(Keys.Down) && m_zamparaMan.State != ZamparaMan.ZamparaManState.GettingHit)
             {
                 // if he's at the bottom
                 if (m_zamparaMan.Position.Y >= WALK_MAXY - 5)
@@ -140,9 +159,19 @@ namespace Zampara
             m_zamparaMan.Load();
             m_zamparaMan.IsEnabled = true;
 
+
+            m_target1 = Game.Content.Load<Texture2D>("target1");
+            m_target2 = Game.Content.Load<Texture2D>("target2");
+            m_target3 = Game.Content.Load<Texture2D>("target3");
+            m_targetDisplay = m_target1;
+
             m_clouds = Game.Content.Load<Texture2D>("clouds");
             m_blocks = Game.Content.Load<Texture2D>("blocks");
             m_grass = Game.Content.Load<Texture2D>("grass");
+            m_hearts = Game.Content.Load<Texture2D>("hearts");
+            m_shoes = Game.Content.Load<Texture2D>("shoes");
+            m_shirt = Game.Content.Load<Texture2D>("shirt");
+            m_pants = Game.Content.Load<Texture2D>("pants");
 
             m_wall = Game.Content.Load<Texture2D>("wall");
 
@@ -166,8 +195,13 @@ namespace Zampara
             ResourceManager res = new ResourceManager("GameObjects.resx", Assembly.GetExecutingAssembly());
             m_treePositions = GameObjects.Trees.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
             m_treeKindIndices = m_treePositions.Select(x => rand.Next(0, m_availableTreeKinds.Length)).ToArray();
+
             m_binPositions = GameObjects.Bins.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
             m_binKindIndices = m_binPositions.Select(x => rand.Next(0, m_availableBinKinds.Length)).ToArray();
+
+            m_shoePos = new Vector2(int.Parse(GameObjects.Shoes), 300);
+            m_shirtPos = new Vector2(int.Parse(GameObjects.Shirt), 300);
+            m_pantsPos = new Vector2(int.Parse(GameObjects.Pants), 300);
 
             m_home1Coordinates = GameObjects.Home1.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
             m_home2Coordinates = GameObjects.Home2.Split(',').Select(x => int.Parse(x.Trim())).ToArray();
@@ -182,6 +216,7 @@ namespace Zampara
                 m_boobyWoman[i].Position.Y = (float)(WALK_MINY + (WALK_MAXY - WALK_MINY) * rand.NextDouble());
                 m_boobyWoman[i].IsEnabled = false;
             }
+            m_boobyWoman = m_boobyWoman.OrderBy(x => x.Position.Y).ToArray();
         }
 
         public override void UnloadContent()
@@ -217,6 +252,7 @@ namespace Zampara
             int howManyRoadsAreBehind = RoadOffset / (m_road.Width / 2);
 
             DrawTile(batch, m_clouds, RoadOffset / 4, 0, .5f);
+            
 
             DrawTile(batch, m_blocks, RoadOffset / 2, 100, .5f);
 
@@ -225,15 +261,7 @@ namespace Zampara
             int homeLayerOffset = (int)(RoadOffset / 1.1);
             float homeLayerScale = 0.25f;
 
-            for (int hi = 0; hi < m_home1Coordinates.Length; hi++)
-            {
-                batch.Draw(m_home1, new Rectangle(m_home1Coordinates[hi] - homeLayerOffset, HOMESY, (int)(m_home1.Width * homeLayerScale), (int)(m_home1.Height * homeLayerScale)), Color.White);
-            }
-            for (int hi = 0; hi < m_home2Coordinates.Length; hi++)
-            {
-                batch.Draw(m_home2, new Rectangle(m_home2Coordinates[hi] - homeLayerOffset, HOMESY, (int)(m_home2.Width * homeLayerScale), (int)(m_home2.Height * homeLayerScale)), Color.White);
-            }
-
+            //ROAD
             DrawTile(batch, m_road, RoadOffset, 300, 0.5f);
 
             // TREES
@@ -244,13 +272,29 @@ namespace Zampara
                 batch.Draw(tree, new Rectangle(treePosition - RoadOffset, 140, tree.Width / 2, tree.Height / 2), Color.White);
             }
 
+            //HOMES
+            for (int hi = 0; hi < m_home1Coordinates.Length; hi++)
+            {
+                batch.Draw(m_home1, new Rectangle(m_home1Coordinates[hi] - homeLayerOffset, HOMESY, (int)(m_home1.Width * homeLayerScale), (int)(m_home1.Height * homeLayerScale)), Color.White);
+            }
+            for (int hi = 0; hi < m_home2Coordinates.Length; hi++)
+            {
+                batch.Draw(m_home2, new Rectangle(m_home2Coordinates[hi] - homeLayerOffset, HOMESY, (int)(m_home2.Width * homeLayerScale), (int)(m_home2.Height * homeLayerScale)), Color.White);
+            }
+
+            batch.Draw(m_shoes, new Rectangle((int)(m_shoePos.X - RoadOffset), (int)m_shoePos.Y, m_shoes.Width, m_shoes.Height), Color.White);
+            batch.Draw(m_shirt, new Rectangle((int)(m_shirtPos.X - RoadOffset), (int)m_shirtPos.Y, m_shoes.Width, m_shoes.Height), Color.White);
+            batch.Draw(m_pants, new Rectangle((int)(m_pantsPos.X - RoadOffset), (int)m_pantsPos.Y, m_pants.Width, m_pants.Height), Color.White);
+
+
+            // ZAMPARA
+            m_zamparaMan.Draw(_time, batch, 0);
+
+            //BOOBY WOMEN
             foreach (BoobyWoman b in m_boobyWoman)
             {
                 b.Draw(_time, batch, -RoadOffset);
             }
-
-            // ZAMPARA
-            m_zamparaMan.Draw(_time, batch, 0);
 
             // BINS
             for (int bi = 0; bi < m_binPositions.Length; bi++)
@@ -267,16 +311,22 @@ namespace Zampara
                 int binX = m_binPositions[bi] - RoadOffset;
                 int binY = 430;
                 batch.Draw(bin, new Rectangle(binX, binY, bin.Width / 4, bin.Height / 4), Color.White);
-                if (Math.Abs(binX - m_zamparaMan.Position.X) < Game.Window.ClientBounds.Width / 4)
+                if (m_zamparaMan.State != ZamparaMan.ZamparaManState.HidingInsideBin)
                 {
-                    m_animator.PlayAnimation(m_hand);
-                    m_animator.Draw(_time, batch, new Vector2(binX, binY), SpriteEffects.None, 0.5f, false);
+                    if (Math.Abs(binX - m_zamparaMan.Position.X) < Game.Window.ClientBounds.Width / 4)
+                    {
+                        m_animator.PlayAnimation(m_hand);
+                        m_animator.Draw(_time, batch, new Vector2(binX, binY), SpriteEffects.None, 0.5f, false);
+                    }
                 }
             }
 
             DrawTile(batch, m_grass, (int)(RoadOffset * 1.2), 343, 0.4f);
 
-            batch.DrawString(m_font, "Health:" + m_zamparaMan.Health.ToString("#"), new Vector2(5, 5), Color.Black);
+            batch.Draw(m_hearts, new Vector2(25, 25), new Rectangle(0, 0, (int)(m_hearts.Width * m_zamparaMan.Health * 0.01f), m_hearts.Height), Color.White);
+            //batch.DrawString(m_font, "Health:" + m_zamparaMan.Health.ToString("#"), new Vector2(5, 5), Color.Black);
+
+            batch.Draw(m_targetDisplay, new Vector2(450, 10), Color.White);
 
             batch.End();
         }
@@ -291,7 +341,7 @@ namespace Zampara
 
             foreach (BoobyWoman b in m_boobyWoman)
             {
-                if (Math.Abs(b.Position.X - m_zamparaMan.Position.X - RoadOffset) < 800)
+                if (Math.Abs(b.Position.X - m_zamparaMan.Position.X - RoadOffset) < Game.Window.ClientBounds.Width * 0.7)
                 {
                     b.IsEnabled = true;
                 }
@@ -323,8 +373,8 @@ namespace Zampara
                     Rectangle rectBoobywoman = new Rectangle((int)(b.DrawX), (int)b.DrawY, b.Width, b.Height);
                     Rectangle rectZampara = new Rectangle((int)(m_zamparaMan.DrawX), (int)m_zamparaMan.DrawY, m_zamparaMan.Width, m_zamparaMan.Height);
 
-                    rectBoobywoman.Inflate(-50, -50);
-                    rectZampara.Inflate(-50, -50);
+                    rectBoobywoman.Inflate(-20, -20);
+                    rectZampara.Inflate(-30, -30);
 
                     if (rectBoobywoman.Intersects(rectZampara))
                     {
@@ -332,6 +382,27 @@ namespace Zampara
                         hits = true;
                     }
                 }
+
+                if (m_zamparaMan.Position.X + RoadOffset >= m_shoePos.X)
+                {
+                    m_zamparaMan.GrantShoes();
+                    m_shoePos.X = -500;
+                    m_targetDisplay = m_target2;
+                }
+
+                if (m_zamparaMan.Position.X + RoadOffset >= m_shirtPos.X)
+                {
+                    m_zamparaMan.GrantShirt();
+                    m_shirtPos.X = -500;
+                    m_targetDisplay = m_target3;
+                }
+
+                if (m_zamparaMan.Position.X + RoadOffset >= m_pantsPos.X)
+                {
+                    m_pantsPos.X = -500;
+                    m_targetDisplay = m_target4;
+                }
+
 
                 if (hits)
                 {
@@ -348,6 +419,13 @@ namespace Zampara
                         b.State = BoobyWoman.BoobyWomanState.Walking;
                     }
                     m_zamparaMan.State = ZamparaMan.ZamparaManState.Walking;
+                }
+            }
+            else
+            {
+                foreach (var b in m_boobyWoman)
+                {
+                    b.State = BoobyWoman.BoobyWomanState.Walking;
                 }
             }
         }

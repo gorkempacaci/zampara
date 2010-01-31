@@ -12,6 +12,10 @@ namespace Zampara
     {
         const float GETTING_HIT_PENALTY_PER_SECOND = 20f;
         Animation m_walkingAnimation;
+        Animation m_walkingAnimationShoes;
+        Animation m_walkingAnimationShirt;
+        Animation m_currentAnimation;
+
         Texture2D m_imageHit;
 
         private ZamparaManState m_state;
@@ -48,6 +52,9 @@ namespace Zampara
         public override void Load()
         {
             m_walkingAnimation = new Animation(Game.Content.Load<Texture2D>("behlul"), 0.15f, true, 10);
+            m_walkingAnimationShoes = new Animation(Game.Content.Load<Texture2D>("behlul-ayakkabi"), 0.15f, true, 10);
+            m_walkingAnimationShirt = new Animation(Game.Content.Load<Texture2D>("behlul-gomlek"), 0.15f, true, 10);
+            m_currentAnimation = m_walkingAnimation;
             m_imageHit = Game.Content.Load<Texture2D>("behlul-hurt");
         }
 
@@ -130,6 +137,22 @@ namespace Zampara
             HidingInsideBinIndex = -1;
         }
 
+        public void GrantShoes()
+        {
+            if (m_currentAnimation == m_walkingAnimation)
+            {
+                m_currentAnimation = m_walkingAnimationShoes;
+            }
+        }
+
+        public void GrantShirt()
+        {
+            if (m_currentAnimation == m_walkingAnimationShoes)
+            {
+                m_currentAnimation = m_walkingAnimationShirt;
+            }
+        }
+
         public override void Draw(GameTime _time, SpriteBatch _batch, int _offset)
         {
             float scaleFactor = 0.8f + 0.2f * (Position.Y - LevelWalker.WALK_MINY) / (LevelWalker.WALK_MAXY - LevelWalker.WALK_MINY);
@@ -142,7 +165,7 @@ namespace Zampara
                     // no draw.
                     break;
                 default:
-                    m_animationPlayer.PlayAnimation(m_walkingAnimation);
+                    m_animationPlayer.PlayAnimation(m_currentAnimation);
                     GameTime animationTime;
                     animationTime = _time;
                     m_animationPlayer.Draw(animationTime, _batch, new Vector2(DrawX, DrawY), (Facing == FaceDirection.Right ? SpriteEffects.None : SpriteEffects.FlipHorizontally), scaleFactor, !IsMoving);
