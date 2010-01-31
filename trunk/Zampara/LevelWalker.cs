@@ -272,10 +272,10 @@ namespace Zampara
 
         public void CheckForCollisionsAndAct()
         {
-            foreach (BoobyWoman b in m_boobyWoman.Where(x => x.IsEnabled))
+            foreach (BoobyWoman b in m_boobyWoman)
             {
-                Rectangle rectBoobywoman = b.Rectangle;
-                Rectangle rectZampara = m_zamparaMan.Rectangle;
+                Rectangle rectBoobywoman = new Rectangle((int)(b.DrawX), (int)b.DrawY, b.Width, b.Height);
+                Rectangle rectZampara = new Rectangle((int)(m_zamparaMan.DrawX), (int)m_zamparaMan.DrawY, m_zamparaMan.Width, m_zamparaMan.Height);
 
                 //rectBoobywoman.Inflate(-50, -50);
                 //rectZampara.Inflate(-50, -50);

@@ -25,9 +25,20 @@ namespace Zampara
         public abstract int Height { get; }
         public abstract int Width { get; }
 
+        public abstract int DrawX { get; }
+        public abstract int DrawY { get; }
+
         public ActorBase(ZamparaGame _game)
         {
             Game = _game;
+        }
+
+        protected LevelWalker WalkerLevel
+        {
+            get
+            {
+                return (Game.CurrentLevel as LevelWalker);
+            }
         }
 
         public virtual bool IsMoving
@@ -42,7 +53,7 @@ namespace Zampara
         {
             get
             {
-                return new Rectangle((int)Position.X + (Game.CurrentLevel as LevelWalker).RoadOffset, (int)Position.Y, Width, Height);
+                return new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
             }
         }
 
