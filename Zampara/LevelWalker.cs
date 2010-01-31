@@ -47,6 +47,7 @@ namespace Zampara
         int[] m_treeKindIndices;
 
         Texture2D[] m_availableBinKinds;
+        Texture2D[] m_availableBinKindsHidingIn;
         int[] m_binPositions;
         int[] m_binKindIndices;
 
@@ -101,7 +102,23 @@ namespace Zampara
 
         public override void HandleInput()
         {
-            m_zamparaMan.HandleInput();   
+            KeyboardState keyState = Keyboard.GetState();
+            m_zamparaMan.HandleInput(); // for controlling the guy
+            // if he's going down
+            if (keyState.IsKeyDown(Keys.Down))
+            {
+                // if he's at the bottom
+                if (m_zamparaMan.Position.Y >= WALK_MAXY - 5)
+                {
+                    for (int bi = 0; bi < m_binPositions.Length; bi++)
+                    {
+                        if (Math.Abs(m_binPositions[bi] - (m_zamparaMan.Position.X + RoadOffset)) < 100)
+                        {
+                            m_zamparaMan.HideInsideBin(bi);
+                        }
+                    }
+                }
+            }
         }
 
         public override void LoadContent()
@@ -139,6 +156,9 @@ namespace Zampara
 
             m_availableBinKinds = new Texture2D[1];
             m_availableBinKinds[0] = Game.Content.Load<Texture2D>("bin");
+
+            m_availableBinKindsHidingIn = new Texture2D[1];
+            m_availableBinKindsHidingIn[0] = Game.Content.Load<Texture2D>("bin-hidein");
 
             m_zamparaMan.Position = new Vector2(0, Game.Window.ClientBounds.Height - m_zamparaMan.Height);
 
@@ -235,14 +255,23 @@ namespace Zampara
             // BINS
             for (int bi = 0; bi < m_binPositions.Length; bi++)
             {
-                Texture2D bin = m_availableBinKinds[m_binKindIndices[bi]];
+                Texture2D bin;
+                if (m_zamparaMan.State == ZamparaMan.ZamparaManState.HidingInsideBin && m_zamparaMan.HidingInsideBinIndex == bi)
+                {
+                    bin = m_availableBinKindsHidingIn[m_binKindIndices[bi]];
+                }
+                else
+                {
+                    bin = m_availableBinKinds[m_binKindIndices[bi]];
+                }
                 int binX = m_binPositions[bi] - RoadOffset;
                 int binY = 430;
                 batch.Draw(bin, new Rectangle(binX, binY, bin.Width / 4, bin.Height / 4), Color.White);
-                
-                m_animator.PlayAnimation(m_hand);
-                m_animator.Draw(_time, batch, new Vector2(binX, binY), SpriteEffects.None, 0.5f, false);
-
+                if (Math.Abs(binX - m_zamparaMan.Position.X) < Game.Window.ClientBounds.Width / 4)
+                {
+                    m_animator.PlayAnimation(m_hand);
+                    m_animator.Draw(_time, batch, new Vector2(binX, binY), SpriteEffects.None, 0.5f, false);
+                }
             }
 
             DrawTile(batch, m_grass, (int)(RoadOffset * 1.2), 343, 0.4f);
@@ -285,38 +314,41 @@ namespace Zampara
 
         public void CheckForCollisionsAndAct()
         {
-            bool hits = false;
-            List<BoobyWoman> hittingWomen = new List<BoobyWoman>();
-            foreach (BoobyWoman b in m_boobyWoman)
+            if (m_zamparaMan.State != ZamparaMan.ZamparaManState.HidingInsideBin)
             {
-                Rectangle rectBoobywoman = new Rectangle((int)(b.DrawX), (int)b.DrawY, b.Width, b.Height);
-                Rectangle rectZampara = new Rectangle((int)(m_zamparaMan.DrawX), (int)m_zamparaMan.DrawY, m_zamparaMan.Width, m_zamparaMan.Height);
-
-                rectBoobywoman.Inflate(-50, -50);
-                rectZampara.Inflate(-50, -50);
-
-                if (rectBoobywoman.Intersects(rectZampara))
+                bool hits = false;
+                List<BoobyWoman> hittingWomen = new List<BoobyWoman>();
+                foreach (BoobyWoman b in m_boobyWoman)
                 {
-                    hittingWomen.Add(b);
-                    hits = true;
-                }
-            }
+                    Rectangle rectBoobywoman = new Rectangle((int)(b.DrawX), (int)b.DrawY, b.Width, b.Height);
+                    Rectangle rectZampara = new Rectangle((int)(m_zamparaMan.DrawX), (int)m_zamparaMan.DrawY, m_zamparaMan.Width, m_zamparaMan.Height);
 
-            if (hits)
-            {
-                foreach (var b in hittingWomen)
-                {
-                    b.State = BoobyWoman.BoobyWomanState.Hitting;
+                    rectBoobywoman.Inflate(-50, -50);
+                    rectZampara.Inflate(-50, -50);
+
+                    if (rectBoobywoman.Intersects(rectZampara))
+                    {
+                        hittingWomen.Add(b);
+                        hits = true;
+                    }
                 }
-                m_zamparaMan.State = ZamparaMan.ZamparaManState.GettingHit;
-            }
-            else
-            {
-                foreach (var b in m_boobyWoman)
+
+                if (hits)
                 {
-                    b.State = BoobyWoman.BoobyWomanState.Walking;
+                    foreach (var b in hittingWomen)
+                    {
+                        b.State = BoobyWoman.BoobyWomanState.Hitting;
+                    }
+                    m_zamparaMan.State = ZamparaMan.ZamparaManState.GettingHit;
                 }
-                m_zamparaMan.State = ZamparaMan.ZamparaManState.Walking;
+                else
+                {
+                    foreach (var b in m_boobyWoman)
+                    {
+                        b.State = BoobyWoman.BoobyWomanState.Walking;
+                    }
+                    m_zamparaMan.State = ZamparaMan.ZamparaManState.Walking;
+                }
             }
         }
     }

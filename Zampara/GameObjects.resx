@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Bins" xml:space="preserve">
-    <value>200, 600, 900, 1100, 1500</value>
+    <value>200, 1100, 1500, 1800, 2200, 2900, 3100, 3200, 3300, 3800, 4200, 4700</value>
   </data>
   <data name="BoobyWoman" xml:space="preserve">
     <value>600, 1200, 1700, 1900, 2500, 2600, 2700, 2800, 3300, 3600, 3650, 3700, 4000, 4500, 4550, 4600</value>
   </data>
   <data name="Home1" xml:space="preserve">
-    <value>1300</value>
+    <value>1300, 2500, 3500</value>
   </data>
   <data name="Home2" xml:space="preserve">
-    <value>1500</value>
+    <value>1500, 2800, 4000</value>
   </data>
   <data name="Pants" xml:space="preserve">
     <value>4500</value>

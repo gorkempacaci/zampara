@@ -170,13 +170,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="hand-sprites.png">
-      <Name>hand-sprites</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Hud.spritefont">
       <Name>Hud</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -191,11 +184,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="behlul-ayakabi.png">
-      <Name>behlul-ayakabi</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="behlul-gomlek.png">
       <Name>behlul-gomlek</Name>
       <Importer>TextureImporter</Importer>
@@ -214,6 +202,13 @@
       <Name>wftsw</Name>
       <Importer>Mp3Importer</Importer>
       <Processor>SongProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="behlul-ayakkabi.png">
+      <Name>behlul-ayakkabi</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
