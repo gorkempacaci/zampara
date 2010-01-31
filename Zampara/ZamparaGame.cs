@@ -37,7 +37,7 @@ namespace Zampara
 
         public ZamparaGame()
         {
-            m_currentLevel = new LevelWalker(this); //new LevelCinema(this);
+            m_currentLevel = new LevelCinema(this); //new LevelCinema(this);
             m_graphics = new GraphicsDeviceManager(this);
             m_graphics.PreferredBackBufferWidth = 800;
             m_graphics.PreferredBackBufferHeight = 500;
@@ -128,6 +128,14 @@ namespace Zampara
             m_currentLevel.LoadContent();
         }
 
+        public void SwitchToWinGame()
+        {
+            m_currentLevel.UnloadContent();
+            m_currentLevel = new LevelWin(this);
+            m_currentLevel.Initialize();
+            m_currentLevel.LoadContent();
+        }
+
         public void SwitchToGameOver()
         {
             m_currentLevel.UnloadContent();
@@ -138,7 +146,10 @@ namespace Zampara
 
         public void Restart()
         {
-            SwitchToWalkerLevel();
+            m_currentLevel.UnloadContent();
+            m_currentLevel = new LevelCinema(this);
+            m_currentLevel.Initialize();
+            m_currentLevel.LoadContent();
         }
     }
 }
