@@ -190,6 +190,42 @@
       <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\behlul-hurt.xnb</Output>
       <Time>2010-01-30T23:20:43.546875+02:00</Time>
     </Item>
+    <Item>
+      <Source>Hud.spritefont</Source>
+      <Name>Hud</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\Hud.xnb</Output>
+      <Time>2009-05-14T11:57:52+03:00</Time>
+    </Item>
+    <Item>
+      <Source>gameover.PNG</Source>
+      <Name>gameover</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\gameover.xnb</Output>
+      <Time>2010-01-31T02:12:31.703125+02:00</Time>
+    </Item>
+    <Item>
+      <Source>behlul-ayakabi.png</Source>
+      <Name>behlul-ayakabi</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\behlul-ayakabi.xnb</Output>
+      <Time>2010-01-31T00:03:25.046875+02:00</Time>
+    </Item>
+    <Item>
+      <Source>behlul-gomlek.png</Source>
+      <Name>behlul-gomlek</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\labuser.LAB09\Desktop\zamparaSVN\Zampara\bin\x86\Debug\Content\behlul-gomlek.xnb</Output>
+      <Time>2010-01-31T02:31:54.34375+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

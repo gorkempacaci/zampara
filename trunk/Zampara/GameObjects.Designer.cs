@@ -70,6 +70,15 @@ namespace Zampara {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 600, 1200, 1700, 1900, 2500, 2600, 2700.
+        /// </summary>
+        internal static string BoobyWoman {
+            get {
+                return ResourceManager.GetString("BoobyWoman", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 1300.
         /// </summary>
         internal static string Home1 {
@@ -93,33 +102,6 @@ namespace Zampara {
         internal static string Trees {
             get {
                 return ResourceManager.GetString("Trees", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 0, 175, 525.
-        /// </summary>
-        internal static string Wall1 {
-            get {
-                return ResourceManager.GetString("Wall1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 350, 700.
-        /// </summary>
-        internal static string Wall2 {
-            get {
-                return ResourceManager.GetString("Wall2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 875.
-        /// </summary>
-        internal static string Wall3 {
-            get {
-                return ResourceManager.GetString("Wall3", resourceCulture);
             }
         }
     }

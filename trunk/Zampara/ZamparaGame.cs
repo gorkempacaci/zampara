@@ -127,5 +127,18 @@ namespace Zampara
             m_currentLevel.Initialize();
             m_currentLevel.LoadContent();
         }
+
+        public void SwitchToGameOver()
+        {
+            m_currentLevel.UnloadContent();
+            m_currentLevel = new LevelGameOver(this);
+            m_currentLevel.Initialize();
+            m_currentLevel.LoadContent();
+        }
+
+        public void Restart()
+        {
+            SwitchToWalkerLevel();
+        }
     }
 }
