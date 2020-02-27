@@ -1,4 +1,4 @@
-![Screenshot](shot 2.png "Logo Title Text 1")
+![Screenshot](https://github.com/gorkempacaci/zampara/blob/master/shot%202.png "Logo Title Text 1")
 
 ### Zampara ###
 
